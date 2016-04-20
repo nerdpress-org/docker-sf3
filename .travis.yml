@@ -7,5 +7,9 @@ before_script:
     - cd sf3_project
     - sh ./docker.sh
 
+script:
+    - docker exec -it -u www-data sf_web composer require phpunit/phpunit
+    - docker exec -it -u www-data sf_web composer vendor/phpunit/phpunit/phpunit.php
+
 services:
     - docker
