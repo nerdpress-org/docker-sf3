@@ -19,14 +19,18 @@ sf_web:
 
 #mysql
 db:
-    image: tutum/mysql:latest
+    image: mysql:latest
     container_name: "sf_db"
-    volumes:
-        - "./docker/data/sql/:/var/lib/mysql"
+    ports:
+    - 3306
     environment:
-        ON_CREATE_DB: "sf3"
-        MYSQL_USER: "root"
-        MYSQL_PASS: "root"
+        MYSQL_DATABASE: sf3
+        MYSQL_USER: sf3
+        MYSQL_PASSWORD: sf3
+        MYSQL_ROOT_PASSWORD: root
+    volumes:
+    - ./docker/data/sql:/var/lib/mysql
+    - ./mysql/my.cnf:/etc/mysql/conf.d/z_my.cnf
 
 
 #phpmyadmin
