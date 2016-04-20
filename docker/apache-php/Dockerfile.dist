@@ -51,7 +51,7 @@ ENV dir /var/www/
 
 COPY php.ini /usr/local/etc/php/
 COPY .bashrc /var/www
-RUN ls -s ${dir}/data/.bash_history /var/www/.bash_history
+RUN ln -s ${dir}/data/.bash_history /var/www/.bash_history
 COPY apache2.conf /etc/apache2/apache2.conf
 
 RUN usermod -u $USER_ID www-data -s /bin/bash
