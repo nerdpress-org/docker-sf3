@@ -59,7 +59,7 @@ alias rm='rm -i'
 alias mv='mv -iv'
 alias grep='grep --color=auto -in'
 alias ll="ls -ahl"
-alias sf="php app/console"
+alias sf="php bin/console"
 alias sfcc="sf cache:clear"
 alias c="clear"
 alias db="mysql -hdb -uroot -proot"
