@@ -5,9 +5,7 @@ before_script:
     - composer create-project symfony/framework-standard-edition sf3_project
     - cp -r ./docker* sf3_project
     - cd sf3_project
-    - docker-compose build
-    - docker-compose up -d
-    - docker ps -a
+    - sh ./docker.sh
 
 services:
     - docker
