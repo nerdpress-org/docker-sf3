@@ -49,6 +49,18 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 export PS1='\n\[$bold\]\[$BLACK\][\[$DK_BLUE\]\A\[$BLACK\]]-[\[$GREEN\]\u\[$GREEN\]@\[$GREEN\]\h\[$BLACK\]]-[\[$PINK\]\w\[$BLACK\]]\[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '
 
 ###########################
+## Create Symfony        ##
+###########################
+
+if [ ! -d /var/www/html/composer.lock ]; then
+  cd /tmp
+  composer create-project symfony/framework-standard-edition sf "3.0.*"
+  cp -Rf /tmp/sf/* /var/www/html
+  rm -Rf /tmp/sf
+  cd /var/www/html
+fi
+
+###########################
 ## beautiful bash <3 end ##
 ###########################
 
@@ -62,6 +74,5 @@ alias ll="ls -ahl"
 alias sf="php app/console"
 alias sfcc="sf cache:clear"
 alias c="clear"
-alias db="mysql -hdb -uroot -proot"
 
 export TERM=xterm

@@ -34,7 +34,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
     && docker-php-ext-install mbstring \
-    && docker-php-ext-install exif
+    && docker-php-ext-install exif \
+    && docker-php-ext-install zip
 
 RUN apt-get install -y libmemcached-dev \
  && cd /tmp \
@@ -47,12 +48,15 @@ RUN apt-get install -y libmemcached-dev \
 
 RUN gem update --system && gem install sass -v 3.4.20 && gem install compass -v 1.0.3
 
-ENV dir /var/www/
+ENV dir /var/www/html
+
+RUN ln -s ${dir}/docker/bin/composer /usr/local/sbin/composer
 
 COPY php.ini /usr/local/etc/php/
-COPY .bashrc /var/www
+COPY .bashrc /var/www/
+RUN ln -s ${dir}/docker/data/.bash_history /var/www/.bash_history
 COPY apache2.conf /etc/apache2/apache2.conf
 
 RUN usermod -u $USER_ID www-data -s /bin/bash
 
-WORKDIR ${dir}/html
+WORKDIR ${dir}
