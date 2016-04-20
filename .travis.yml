@@ -1,5 +1,9 @@
-language: php
 sudo: required
+
+language: php
+
+services:
+    - docker
 
 before_script:
     - composer create-project symfony/framework-standard-edition sf3_project
@@ -10,6 +14,3 @@ before_script:
 script:
     - docker exec -it -u www-data sf_web composer require phpunit/phpunit
     - docker exec -it -u www-data sf_web composer vendor/phpunit/phpunit/phpunit.php
-
-services:
-    - docker
