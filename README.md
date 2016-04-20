@@ -6,7 +6,7 @@ Docker setup for existing symfony3 projects
 `cd /path/to/your/symfony-project/`
 `sh docker.sh`
 
-Docker setup for new symfony3 projetcts
+Docker setup for new symfony3 project
 
 `git clone https://github.com/nerdpress-org/docker-sf3.git my-new-project`
 `cd my-new-project`
