@@ -1,11 +1,16 @@
 # docker-sf3
-Docker setup for symfony3 development
-
+Docker setup for existing symfony3 projects
 
 `git clone https://github.com/nerdpress-org/docker-sf3.git docker-sf3`   
 `cp -r docker-sf3/docker* /path/to/your/symfony-project/`   
-`cd /path/to/your/symfony-project/`   
-`sh docker.sh`   
+`cd /path/to/your/symfony-project/`
+`sh docker.sh`
+
+Docker setup for new symfony3 project
+
+`git clone https://github.com/nerdpress-org/docker-sf3.git my-new-project`
+`cd my-new-project`
+`sh docker.sh`
 
 
 ## DB
