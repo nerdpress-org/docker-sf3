@@ -1,4 +1,4 @@
-# docker-sf3
+# docker-sf3 [![Travis](https://img.shields.io/travis/nerdpress-org/docker-sf3.svg?maxAge=2592000?style=flat-square)](https://travis-ci.org/nerdpress-org/docker-sf3)
 Docker advanced LAMP+ES setup for symfony3 development
 
 
