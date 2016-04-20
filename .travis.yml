@@ -4,7 +4,9 @@ before_install:
 - composer create-project symfony/framework-standard-edition sf3_project
 - cp -r ./docker* sf3_project
 - cd sf3_project
-- sh ./docker.sh
+- docker-compose build
+- docker-compose up -d
+- docker ps -a
 
 services:
   - docker
