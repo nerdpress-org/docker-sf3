@@ -65,4 +65,4 @@ memcached:
   image: memcached
   container_name: "sf_memcached"
   ports:
-    - "11211:11211"
+    - "112112:11211"
