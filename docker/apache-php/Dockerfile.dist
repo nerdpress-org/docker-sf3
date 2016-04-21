@@ -47,13 +47,12 @@ RUN apt-get install -y -qq libmemcached-dev \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer&& \
          composer global require hirak/prestissimo
 
-ENV dir /var/www/
 
 COPY php.ini /usr/local/etc/php/
 COPY .bashrc /var/www
-RUN ln -s ${dir}/html/docker/data/.bash_history /var/www/.bash_history
+RUN ln -s /var/www/html/docker/data/.bash_history /var/www/.bash_history
 COPY apache2.conf /etc/apache2/apache2.conf
 
 RUN usermod -u $USER_ID www-data -s /bin/bash
 
-WORKDIR ${dir}/html
+WORKDIR /var/www/html
