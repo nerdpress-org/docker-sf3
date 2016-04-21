@@ -7,8 +7,11 @@ Docker advanced LAMP+ES setup for symfony3 development
 `cd /path/to/your/symfony-project/`   
 `sh docker.sh`   
 
+## Usage
 
-## DB
+    sh docker.sh
+
+### DB
 MySql is used.  
 Its configured to be open for access from outside,  
 so if you prefer to use MySql Workbench on the host, use the containers IP as host.  
