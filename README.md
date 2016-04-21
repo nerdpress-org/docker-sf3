@@ -9,7 +9,12 @@ Docker advanced LAMP setup w/ Elasticsearch & Memcached for symfony3 development
 
 ## Usage
 
-    sh docker.sh
+    ./docker.sh
+    
+If you dont want to be logged in automatically use:  
+
+    ./docker.sh -n
+    
 
 ### DB
 
