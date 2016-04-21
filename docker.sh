@@ -8,7 +8,7 @@ while getopts "$optspec" optchar; do
         n)
              echo "->No Login mode" >&2
              login=false
-             upOption=''
+             upOption='-d'
             ;;
     esac
 done
