@@ -13,5 +13,5 @@ before_script:
 
 script:
     - docker exec -it -u www-data sf_web composer require phpunit/phpunit
-    - docker exec -it -u www-data sf_web php vendor/phpunit/phpunit/phpunit.php
+    - docker exec -it -u www-data sf_web vendor/phpunit/phpunit/phpunit
     - docker-compose stop
