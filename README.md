@@ -1,11 +1,11 @@
-# docker-sf3 [![Travis](https://img.shields.io/travis/nerdpress-org/docker-sf3.svg?style=flat-square)](https://travis-ci.org/nerdpress-org/docker-sf3)
+# docker-sf3 :whale: [![Travis](https://img.shields.io/travis/nerdpress-org/docker-sf3.svg?style=flat-square)](https://travis-ci.org/nerdpress-org/docker-sf3) 
 Docker advanced LAMP setup w/ Elasticsearch & Memcached for symfony3 development
 
 ## Installation
 
-`git clone https://github.com/nerdpress-org/docker-sf3.git docker-sf3`   
-`cp -r docker-sf3/docker* /path/to/your/symfony-project/`   
-`cd /path/to/your/symfony-project/`   
+    git clone https://github.com/nerdpress-org/docker-sf3.git docker-sf3
+    cp -r docker-sf3/docker* /path/to/your/symfony-project/
+    cd /path/to/your/symfony-project/
 
 ## Usage
 
