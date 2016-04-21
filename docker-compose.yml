@@ -30,7 +30,7 @@ db:
         MYSQL_ROOT_PASSWORD: root
     volumes:
     - ./docker/data/sql:/var/lib/mysql
-    - ./mysql/my.cnf:/etc/mysql/conf.d/z_my.cnf
+    - ./docker/mysql/my.cnf:/etc/mysql/conf.d/z_my.cnf
 
 
 #phpmyadmin
