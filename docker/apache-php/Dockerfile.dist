@@ -49,7 +49,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 
 COPY php.ini /usr/local/etc/php/
-COPY .bashrc /var/www
+COPY bashrc.dist /var/www/.bashrc
 RUN ln -s /var/www/html/docker/data/.bash_history /var/www/.bash_history
 COPY apache2.conf /etc/apache2/apache2.conf
 
