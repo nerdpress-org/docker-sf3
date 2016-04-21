@@ -9,8 +9,9 @@ before_script:
     - composer create-project symfony/framework-standard-edition sf3_project
     - cp -r ./docker* sf3_project
     - cd sf3_project
-    - sh ./docker.sh
+    - sh ./docker.sh -n
 
 script:
     - docker exec -it -u www-data sf_web composer require phpunit/phpunit
     - docker exec -it -u www-data sf_web composer vendor/phpunit/phpunit/phpunit.php
+    - docker-compose stop
