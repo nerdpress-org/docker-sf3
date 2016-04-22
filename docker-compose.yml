@@ -15,6 +15,9 @@ sf_web:
         XDEBUG_CONFIG: remote_host=localhost
         PHP_IDE_CONFIG: serverName=sf-docker-localhost
         SSH_AUTH_SOCK: /ssh-agent
+    dns:
+        - 8.8.8.8
+        - 8.8.4.4
 
 
 #mysql
