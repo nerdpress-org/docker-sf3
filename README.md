@@ -46,3 +46,12 @@ Otherwise use phpmyadmin on http://[yourhost*]:8081
 
 \* [yourhost] is *localhost* if you are on Linux,  
 *local.docker* if you are using dlite or the IP of the VM that runs docker
+
+### Elasticsearch
+
+To use elasticsearch via [FOSElasticaBundle](https://github.com/FriendsOfSymfony/FOSElasticaBundle)
+
+```yml
+    elasticsearch_server: elasticsearch
+    elasticsearch_port: 9200
+
