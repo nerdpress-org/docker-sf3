@@ -52,6 +52,51 @@ Otherwise use phpmyadmin on http://[yourhost*]:8081
 To use elasticsearch via [FOSElasticaBundle](https://github.com/FriendsOfSymfony/FOSElasticaBundle)
 
 ```yml
-    elasticsearch_server: elasticsearch
-    elasticsearch_port: 9200
+elasticsearch_server: elasticsearch
+elasticsearch_port: 9200
+```
+
+### Memcached
+
+You can setup memcached for doctrine as described [here](https://blog.42mate.com/?p=62)
+
+```yml
+#parameters.yml
+memcache_hosts:
+    -
+        dsn: memcached
+        port: 11212
+```
+
+```yml
+#app/config/services.yml
+services:
+    memcached:
+        class: Memcached
+        calls:
+            - [ addServers, [%memcache_hosts%] ]
+
+    doctrine.cache.memcached:
+        class: Doctrine\Common\Cache\MemcachedCache
+        calls:
+            - [ setMemcached, [ @memcached ] ]
+```
+
+```yml
+#config.yml
+doctrine:
+    orm:
+        entity_managers:
+            default:
+               ...    
+               metadata_cache_driver:
+                    type: service
+                    id: doctrine.cache.memcached
+                query_cache_driver:
+                    type: service
+                    id: doctrine.cache.memcached
+                result_cache_driver:
+                    type: service
+                    id: doctrine.cache.memcached
+```
 
