@@ -2,7 +2,7 @@
 
 [![Travis](https://img.shields.io/travis/nerdpress-org/docker-sf3.svg?style=flat-square)](https://travis-ci.org/nerdpress-org/docker-sf3)
 
-Docker advanced LAMP setup w/ Elasticsearch & Memcached for symfony3 development 
+Docker advanced LAMP setup w/ Elasticsearch for symfony3 development 
 
 ## Installation
 
