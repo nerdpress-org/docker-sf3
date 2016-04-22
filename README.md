@@ -1,4 +1,4 @@
-# docker-sf3 :whale:
+# docker-sf3
 
 [![Travis](https://img.shields.io/travis/nerdpress-org/docker-sf3.svg?style=flat-square)](https://travis-ci.org/nerdpress-org/docker-sf3)
 
