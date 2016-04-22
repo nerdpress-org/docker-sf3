@@ -58,3 +58,12 @@ elasticsearch:
         - "./docker/data/elasticsearch/:/usr/share/elasticsearch/data"
     ports:
         - 9201:9200
+
+
+#redis
+redis:
+    image: redis
+    container_name: "sf_redis"
+    ports:
+        - "6379"
+        
