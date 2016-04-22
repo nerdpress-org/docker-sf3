@@ -58,11 +58,3 @@ elasticsearch:
         - "./docker/data/elasticsearch/:/usr/share/elasticsearch/data"
     ports:
         - 9201:9200
-
-
-#memcached server
-memcached:
-  image: memcached
-  container_name: "sf_memcached"
-  ports:
-    - "11212:11211"
