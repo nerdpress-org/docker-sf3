@@ -55,3 +55,18 @@ To use elasticsearch via [FOSElasticaBundle](https://github.com/FriendsOfSymfony
 elasticsearch_server: elasticsearch
 elasticsearch_port: 9200
 ```
+
+
+### Mailcatcher
+
+[Mailcatcher](https://mailcatcher.me/) SMTP server is included to test local mails.
+
+
+```yml
+swiftmailer:
+    transport: smtp
+    host:      mailcatcher
+    port:      1025
+```
+
+Mailcatcher will catch any mails sent and display them at http://[yourhost*]:1080
