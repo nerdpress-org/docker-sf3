@@ -23,22 +23,29 @@ For running symfony commands via cli, log into the _sf_web_ container as _www-da
 
     ./docker.sh
     
-This will build and start all containers and log you into the `sf_web` container as _www-data_    
+This will build and start all containers, all logs are send to stdout.  
+
+Open the browser: http://[yourhost*]:8080
+
+If you want be logged in automatically use:  
+
+    ./docker.sh -l
+
+This will log you into the `sf_web` container as _www-data_    
 and shutdown all containers when you log out.
     
-If you dont want to be logged in automatically use:  
-
-    ./docker.sh -n
-    
- To manually log in the container run
+To manually log in the container run
  
      docker exec -it -u www-data sf_web bash
      
- or use the shortcut:
+or use the shortcut:
  
-     sh docker-ssh.sh 
+     ./docker-ssh.sh 
      
- 
+
+To start te container up into the background use:
+
+    ./docker.sh -d
 
 ### DB
 
@@ -62,10 +69,6 @@ Find the IP with: `docker inspect --format '{{ .NetworkSettings.IPAddress }} {{ 
 
 Otherwise use phpmyadmin on http://[yourhost*]:8081
 
-\* [yourhost] is *localhost* if you are on Linux,  
-*local.docker* if you are using dlite or the IP of the VM that runs docker
-
-
 ### Other Services
 
 #### Elasticsearch
@@ -74,3 +77,8 @@ Otherwise use phpmyadmin on http://[yourhost*]:8081
 host: elasticsearch
 port: 9200
 ```
+
+### Footnotes
+
+\* [yourhost] is *localhost* if you are on Linux,  
+*local.docker* if you are using dlite or the IP of the VM that runs docker

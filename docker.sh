@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
 
-upOption="-d"
-login=true
-optspec=":n"
+upOption=""
+login=false
+optspec=":ld"
 while getopts "$optspec" optchar; do
     case "${optchar}" in
-        n)
-             echo "->No Login mode" >&2
-             login=false
-             upOption=''
+        l)
+             echo "->Login after start up" >&2
+             login=true
+             upOption="-d"
+            ;;
+    esac
+    case "${optchar}" in
+        d)
+             echo "->Start up to background" >&2
+             upOption="-d"
             ;;
     esac
 done
