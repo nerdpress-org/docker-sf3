@@ -78,6 +78,13 @@ host: elasticsearch
 port: 9200
 ```
 
+#### Redis Cache
+
+```yml
+host: redis
+port: 6379
+```
+
 ### Footnotes
 
 \* [yourhost] is *localhost* if you are on Linux,  
