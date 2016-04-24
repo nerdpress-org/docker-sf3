@@ -4,6 +4,15 @@
 
 Docker advanced LAMP setup w/ Elasticsearch for symfony3 development 
 
+## Permissions
+
+This projects aims to avoid permission problems with symfony running inside docker
+by changing the user id of the _www-data_ user to the current host user id.
+
+This should work on linux, mac or windows systems.
+
+For running symfony commands via cli, log into the _sf_web_ container as _www-data_
+
 ## Installation
 
     git clone https://github.com/nerdpress-org/docker-sf3.git docker-sf3
@@ -14,13 +23,29 @@ Docker advanced LAMP setup w/ Elasticsearch for symfony3 development
 
     ./docker.sh
     
-This will build and start all containers and log you into the `sf_web` container as _www-data_    
+This will build and start all containers, all logs are send to stdout.  
+
+Open the browser: http://[yourhost*]:8080
+
+If you want be logged in automatically use:  
+
+    ./docker.sh -l
+
+This will log you into the `sf_web` container as _www-data_    
 and shutdown all containers when you log out.
     
-If you dont want to be logged in automatically use:  
+To manually log in the container run
+ 
+     docker exec -it -u www-data sf_web bash
+     
+or use the shortcut:
+ 
+     ./docker-ssh.sh 
+     
 
-    ./docker.sh -n
-    
+To start te container up into the background use:
+
+    ./docker.sh -d
 
 ### DB
 
@@ -44,29 +69,26 @@ Find the IP with: `docker inspect --format '{{ .NetworkSettings.IPAddress }} {{ 
 
 Otherwise use phpmyadmin on http://[yourhost*]:8081
 
+### Other Services
+
+#### Elasticsearch
+
+```yml
+host: elasticsearch
+port: 9200
+```
+
+#### Mailcatcher SMTP
+
+```yml
+host: mailcatcher
+port: 1025
+```
+
+Webinterface on http://[yourhost*]:1080
+
+
+### Footnotes
+
 \* [yourhost] is *localhost* if you are on Linux,  
 *local.docker* if you are using dlite or the IP of the VM that runs docker
-
-### Elasticsearch
-
-To use elasticsearch via [FOSElasticaBundle](https://github.com/FriendsOfSymfony/FOSElasticaBundle)
-
-```yml
-elasticsearch_server: elasticsearch
-elasticsearch_port: 9200
-```
-
-
-### Mailcatcher
-
-[Mailcatcher](https://mailcatcher.me/) SMTP server is included to test local mails.
-
-
-```yml
-swiftmailer:
-    transport: smtp
-    host:      mailcatcher
-    port:      1025
-```
-
-Mailcatcher will catch any mails sent and display them at http://[yourhost*]:1080
