@@ -4,6 +4,15 @@
 
 Docker advanced LAMP setup w/ Elasticsearch for symfony3 development 
 
+## Permissions
+
+This projects aims to avoid permission problems with symfony running inside docker
+by changing the user id of the _www-data_ user to the current host user id.
+
+This should work on linux, mac or windows systems.
+
+For running symfony commands via cli, log into the _sf_web_ container as _www-data_
+
 ## Installation
 
     git clone https://github.com/nerdpress-org/docker-sf3.git docker-sf3
@@ -21,6 +30,15 @@ If you dont want to be logged in automatically use:
 
     ./docker.sh -n
     
+ To manually log in the container run
+ 
+     docker exec -it -u www-data sf_web bash
+     
+ or use the shortcut:
+ 
+     sh docker-ssh.sh 
+     
+ 
 
 ### DB
 
@@ -47,11 +65,12 @@ Otherwise use phpmyadmin on http://[yourhost*]:8081
 \* [yourhost] is *localhost* if you are on Linux,  
 *local.docker* if you are using dlite or the IP of the VM that runs docker
 
-### Elasticsearch
 
-To use elasticsearch via [FOSElasticaBundle](https://github.com/FriendsOfSymfony/FOSElasticaBundle)
+### Other Services
+
+#### Elasticsearch
 
 ```yml
-elasticsearch_server: elasticsearch
-elasticsearch_port: 9200
+host: elasticsearch
+port: 9200
 ```
