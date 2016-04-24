@@ -4,6 +4,15 @@
 
 Docker advanced LAMP setup w/ Elasticsearch for symfony3 development 
 
+## Permissions
+
+This projects aims to avoid permission problems with symfony running inside docker
+by changing the user id of the _www-data_ user to the current host user id.
+
+This should work on linux, mac or windows systems.
+
+For running symfony commands via cli, log into the _sf_web_ container as _www-data_
+
 ## Installation
 
     git clone https://github.com/nerdpress-org/docker-sf3.git docker-sf3
@@ -14,13 +23,29 @@ Docker advanced LAMP setup w/ Elasticsearch for symfony3 development
 
     ./docker.sh
     
-This will build and start all containers and log you into the `sf_web` container as _www-data_    
+This will build and start all containers, all logs are send to stdout.  
+
+Open the browser: http://[yourhost*]:8080
+
+If you want be logged in automatically use:  
+
+    ./docker.sh -l
+
+This will log you into the `sf_web` container as _www-data_    
 and shutdown all containers when you log out.
     
-If you dont want to be logged in automatically use:  
+To manually log in the container run
+ 
+     docker exec -it -u www-data sf_web bash
+     
+or use the shortcut:
+ 
+     ./docker-ssh.sh 
+     
 
-    ./docker.sh -n
-    
+To start te container up into the background use:
+
+    ./docker.sh -d
 
 ### DB
 
@@ -44,14 +69,16 @@ Find the IP with: `docker inspect --format '{{ .NetworkSettings.IPAddress }} {{ 
 
 Otherwise use phpmyadmin on http://[yourhost*]:8081
 
-\* [yourhost] is *localhost* if you are on Linux,  
-*local.docker* if you are using dlite or the IP of the VM that runs docker
+### Other Services
 
-### Elasticsearch
-
-To use elasticsearch via [FOSElasticaBundle](https://github.com/FriendsOfSymfony/FOSElasticaBundle)
+#### Elasticsearch
 
 ```yml
-elasticsearch_server: elasticsearch
-elasticsearch_port: 9200
+host: elasticsearch
+port: 9200
 ```
+
+### Footnotes
+
+\* [yourhost] is *localhost* if you are on Linux,  
+*local.docker* if you are using dlite or the IP of the VM that runs docker
