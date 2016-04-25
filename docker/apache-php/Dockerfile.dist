@@ -28,6 +28,11 @@ ADD docker-php-pecl-install /usr/local/bin/
 RUN chmod u+x /usr/local/bin/docker-php-pecl-install
 RUN docker-php-pecl-install xdebug
 
+RUN sed -i '1 a xdebug.remote_autostart=true' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
+RUN sed -i '1 a xdebug.remote_connect_back=1 ' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
+RUN sed -i '1 a xdebug.remote_enable=1' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
+RUN sed -i '1 a xdebug.max_nesting_level = 1200' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
+
 RUN apt-get install -y -qq libmemcached-dev \
  && cd /tmp \
  && git clone -b php7 https://github.com/php-memcached-dev/php-memcached.git \
