@@ -6,7 +6,7 @@ Docker advanced LAMP setup w/ Elasticsearch for symfony3 development
 
 ## Permissions
 
-This projects aims to avoid permission problems with symfony running inside docker
+This projects aims to avoid permission problems with symfony running inside docker    
 by changing the user id of the _www-data_ user to the current host user id.
 
 This should work on linux, mac or windows systems.
