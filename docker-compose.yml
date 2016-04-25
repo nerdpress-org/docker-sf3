@@ -11,6 +11,7 @@ sf_web:
     links:
         - db
         - elasticsearch
+        - redis
     environment:
         XDEBUG_CONFIG: remote_host=localhost
         PHP_IDE_CONFIG: serverName=sf-docker-localhost
@@ -58,3 +59,11 @@ elasticsearch:
         - "./docker/data/elasticsearch/:/usr/share/elasticsearch/data"
     ports:
         - 9201:9200
+
+
+#redis
+redis:
+    image: redis
+    container_name: "sf_redis"
+    ports:
+        - "6379"
