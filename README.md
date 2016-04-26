@@ -6,7 +6,7 @@ Docker advanced LAMP setup w/ Elasticsearch for symfony3 development
 
 ## Permissions
 
-This projects aims to avoid permission problems with symfony running inside docker
+This projects aims to avoid permission problems with symfony running inside docker    
 by changing the user id of the _www-data_ user to the current host user id.
 
 This should work on linux, mac or windows systems.
@@ -46,6 +46,22 @@ or use the shortcut:
 To start te container up into the background use:
 
     ./docker.sh -d
+    
+### PHP
+
+PHP7 is used.  
+
+#### Xdebug
+
+Xdebug is activated. 
+Change the ini settings for f.e. remote_host in the .env file according to your docker setup.  
+
+In PHPStorm you will need to setup a server, we assume that it is called *docker-sf3*.  
+In the Server set the Host you are using, port will be 8080 and the Debugger is Xdebug.  
+In the Path Mappings set your root dir to /var/www/html  
+
+Now set some breakpoint and call your site with ide key as GET param or in a cookie.  
+Happy debugging :)
 
 ### DB
 

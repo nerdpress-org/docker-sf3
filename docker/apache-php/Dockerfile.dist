@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y -qq \
         libpng12-dev \
         make
 
-RUN docker-php-ext-install -j$(nproc) iconv mcrypt mbstring exif zip opcache pdo_mysql\
+RUN docker-php-ext-install -j$(nproc) iconv mcrypt mbstring exif zip opcache pdo_mysql pcntl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-configure intl \
@@ -27,6 +27,11 @@ RUN docker-php-ext-install -j$(nproc) iconv mcrypt mbstring exif zip opcache pdo
 ADD docker-php-pecl-install /usr/local/bin/
 RUN chmod u+x /usr/local/bin/docker-php-pecl-install
 RUN docker-php-pecl-install xdebug
+
+RUN sed -i '1 a xdebug.remote_autostart=true' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
+RUN sed -i '1 a xdebug.remote_connect_back=1 ' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
+RUN sed -i '1 a xdebug.remote_enable=1' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
+RUN sed -i '1 a xdebug.max_nesting_level = 1200' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
 
 RUN apt-get install -y -qq libmemcached-dev \
  && cd /tmp \

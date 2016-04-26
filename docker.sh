@@ -29,6 +29,10 @@ fi
 
 sed "s/\$USER_ID/$uid/g" ./docker/apache-php/Dockerfile.dist > ./docker/apache-php/Dockerfile
 
+if [ ! -e ./docker-env ]; then
+    cp ./docker-env.dist ./docker-env
+fi
+
 ##build and launch containers
 docker-compose build
 docker-compose up $upOption
