@@ -57,7 +57,7 @@ Xdebug is activated.
 Change the ini settings for f.e. remote_host in the .env file according to your docker setup.  
 
 In PHPStorm you will need to setup a server, we assume that it is called *docker-sf3*.  
-In the Server set the Host you are using, port will be 8080 and the Debugger is Xdebug.  
+In the Server set the Host you are using, Port will be *8080* and the Debugger is *Xdebug*.  
 In the Path Mappings set your root dir to /var/www/html  
 
 Now set some breakpoint and call your site with ide key as GET param or in a cookie.  
@@ -97,4 +97,4 @@ port: 9200
 ### Footnotes
 
 \* [yourhost] is *localhost* if you are on Linux,  
-*local.docker* if you are using dlite or the IP of the VM that runs docker
+*local.docker* if you are using [dlite](https://github.com/nlf/dlite) or the IP of the VM that runs docker
