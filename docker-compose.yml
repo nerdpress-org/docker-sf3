@@ -11,11 +11,8 @@ sf_web:
     links:
         - db
         - elasticsearch
-    environment:
-        XDEBUG_CONFIG: remote_host=localhost
-        PHP_IDE_CONFIG: serverName=sf-docker-localhost
-        SSH_AUTH_SOCK: /ssh-agent
-
+    env_file:
+        - docker-env
 
 #mysql
 db:
