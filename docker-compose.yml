@@ -11,6 +11,7 @@ sf_web:
     links:
         - db
         - elasticsearch
+        - mailcatcher
     env_file:
         - docker-env
 
@@ -55,3 +56,12 @@ elasticsearch:
         - "./docker/data/elasticsearch/:/usr/share/elasticsearch/data"
     ports:
         - 9201:9200
+
+
+#mailcatcher
+mailcatcher:
+    container_name: "sf_mailcatcher"
+    image: yappabe/mailcatcher
+    ports:
+        - 1025:1025
+        - 1080:1080
