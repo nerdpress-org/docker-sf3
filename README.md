@@ -18,6 +18,9 @@ For running symfony commands via cli, log into the _sf_web_ container as _www-da
     git clone https://github.com/nerdpress-org/docker-sf3.git docker-sf3
     cp -r docker-sf3/docker* /path/to/your/symfony-project/
     cd /path/to/your/symfony-project/
+    
+On first startup the *docker-env.dist* file will be copied to the *docker-env* which will be used.  
+Do this manually and edit *docker-env* for your local settings, if you need to change values initally.  
 
 ## Usage
 
