@@ -12,6 +12,7 @@ sf_web:
         - db
         - elasticsearch
         - mailcatcher
+        - blackfire
     env_file:
         - docker-env
 
@@ -65,3 +66,9 @@ mailcatcher:
     ports:
         - 1025:1025
         - 1080:1080
+
+blackfire:
+  restart: always
+  image: blackfire/blackfire
+  env_file:
+    - docker-env

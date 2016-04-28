@@ -6,3 +6,9 @@ XDEBUG_CONFIG=remote_host=localhost remote_port=9000 xdebug.remote_mode=req xdeb
 #XDEBUG_CONFIG=remote_host=192.168.2.165 remote_port=9000 xdebug.remote_mode=req xdebug.remote_handler=dbgp
 
 PHP_IDE_CONFIG=serverName=docker-sf3
+
+#blackfire
+BLACKFIRE_SERVER_ID=<your server id>
+BLACKFIRE_SERVER_TOKEN=<your server token>
+BLACKFIRE_CLIENT_ID=<your client id>
+BLACKFIRE_CLIENT_TOKEN=<your client token>
