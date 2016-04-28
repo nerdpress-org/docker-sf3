@@ -82,7 +82,7 @@ Use the name of the service as the database host in your connection settings:
 
 ```yml
 database_driver:   pdo_mysql
-database_host:     db 
+database_host:     sf_db 
 database_port:     ~
 database_name:     sf3
 database_user:     sf3
