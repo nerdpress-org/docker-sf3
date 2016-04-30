@@ -1,5 +1,9 @@
 ## Startup options
 
+Setup environment, start all containers and display logs in stdout:  
+
+    ./docker.sh
+
 If you want be logged in automatically use:  
 
     ./docker.sh -l
