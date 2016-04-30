@@ -11,6 +11,7 @@
 ## docker-sf3 - advanced LAMP setup for symfony3 development
 
 [![Travis](https://img.shields.io/travis/nerdpress-org/docker-sf3.svg?style=flat-square)](https://travis-ci.org/nerdpress-org/docker-sf3)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/f1433af6-bcd5-4c76-832e-4b1b05df1577.svg?maxAge=2592000&style=flat-square)](https://insight.sensiolabs.com/projects/f1433af6-bcd5-4c76-832e-4b1b05df1577)
 
 permission-hassle free <sup>:tm:</sup> [» More](/Resources/doc/permissions.md)
 
