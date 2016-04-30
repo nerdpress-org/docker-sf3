@@ -27,53 +27,16 @@ Do this manually and edit *docker-env* for your local settings, if you need to c
     ./docker.sh
     
 This will build and start all containers, all logs are send to stdout.  
+[» More on startup options ](Resources/doc/startup.md)
 
 Open the browser: http://[yourhost*]:8080
 
-If you want be logged in automatically use:  
-
-    ./docker.sh -l
-
-This will log you into the `sf_web` container as _www-data_    
-and shutdown all containers when you log out.
-    
-To manually log in the container run
- 
-     docker exec -it -u www-data sf_web bash
-     
-or use the shortcut:
- 
-     ./docker-ssh.sh 
-     
-
-To start te container up into the background use:
-
-    ./docker.sh -d
-    
 ### PHP
 
 PHP7 is used.  
 
-#### Xdebug
-
-Xdebug is activated. 
-Change the ini settings for f.e. remote_host in the *docker-env* file according to your docker setup.  
-
-In PHPStorm you will need to setup a server, we assume that it is called *docker-sf3*.  
-In the Server set the Host you are using, Port will be *8080* and the Debugger is *Xdebug*.  
-In the Path Mappings set your root dir to /var/www/html  
-
-Now set some breakpoint and call your site with ide key as GET param or in a cookie.  
-
-Happy debugging :)
-
-#### Blackfire
-
-Blackfire client and agent are provided by the official Docker image.  
-The probe is integrated in the PHP container.  
-Get the Blackfire Bookmarklet and enter your credentials in *docker-env* and thats it.
-
-Happy Profiling :)
+Xdebug and Blackfire.io support are included by default.   
+[» How to configure](Resources/doc/debug) 
 
 ### DB
 
@@ -88,8 +51,6 @@ database_name:     sf3
 database_user:     sf3
 database_password: root
 ```
-
-
 
 Its configured to be open for access from outside,  
 so if you prefer to use MySql Workbench on the host, use the containers IP as host.  
