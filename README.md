@@ -8,11 +8,10 @@
                                                                                
 ```
 
-# docker-sf3
+# docker-sf3 - advanced LAMP setup for symfony3 development
 
 [![Travis](https://img.shields.io/travis/nerdpress-org/docker-sf3.svg?style=flat-square)](https://travis-ci.org/nerdpress-org/docker-sf3)
 
-Docker advanced LAMP setup for symfony3 development    
 permission-hassle free <sup>:tm:</sup> [» More](/Resources/doc/permissions.md)
 
 ## Installation
