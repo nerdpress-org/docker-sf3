@@ -8,7 +8,7 @@
                                                                                
 ```
 
-# docker-sf3 - advanced LAMP setup for symfony3 development
+## docker-sf3 - advanced LAMP setup for symfony3 development
 
 [![Travis](https://img.shields.io/travis/nerdpress-org/docker-sf3.svg?style=flat-square)](https://travis-ci.org/nerdpress-org/docker-sf3)
 
