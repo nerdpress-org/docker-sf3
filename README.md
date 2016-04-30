@@ -3,7 +3,7 @@
 [![Travis](https://img.shields.io/travis/nerdpress-org/docker-sf3.svg?style=flat-square)](https://travis-ci.org/nerdpress-org/docker-sf3)
 
 Docker advanced LAMP setup for symfony3 development    
-permission-hassle free :tm: [» More](/Resources/doc/permissions.md)
+permission-hassle free <sup>:tm:</sup> [» More](/Resources/doc/permissions.md)
 
 ## Installation
 
@@ -21,7 +21,7 @@ Do this manually and edit *docker-env* for your local settings, if you need to c
 This will build and start all containers and log you into the symfony container as _www-data_.  
 [» More startup options ](Resources/doc/startup.md)
 
-Open the browser: http://[yourhost*]:8080
+Open the browser: [http://[yourhost<sup>*</sup>]:8080](http://[yourhost]:8080) 
 
 ### PHP
 
