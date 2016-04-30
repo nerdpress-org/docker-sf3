@@ -2,16 +2,8 @@
 
 [![Travis](https://img.shields.io/travis/nerdpress-org/docker-sf3.svg?style=flat-square)](https://travis-ci.org/nerdpress-org/docker-sf3)
 
-Docker advanced LAMP setup w/ Elasticsearch for symfony3 development 
-
-## Permissions
-
-This projects aims to avoid permission problems with symfony running inside docker    
-by changing the user id of the _www-data_ user to the current host user id.
-
-This should work on linux, mac or windows systems.
-
-For running symfony commands via cli, log into the _sf_web_ container as _www-data_
+Docker advanced LAMP setup for symfony3 development    
+permission-hassle free :tm: [» More](/Resources/doc/permissions.md)
 
 ## Installation
 
@@ -36,7 +28,7 @@ Open the browser: http://[yourhost*]:8080
 PHP7 is used.  
 
 Xdebug and Blackfire.io support are included by default.   
-[» How to configure](Resources/doc/debug) 
+[» How to configure](Resources/doc/debug.md) 
 
 ### DB
 
@@ -60,22 +52,8 @@ Otherwise use phpmyadmin on http://[yourhost*]:8081
 
 ### Other Services
 
-#### Elasticsearch
-
-```yml
-host: elasticsearch
-port: 9200
-```
-
-#### Mailcatcher SMTP
-
-```yml
-host: mailcatcher
-port: 1025
-```
-
-Webinterface on http://[yourhost*]:1080
-
+* [Elasticsearch](Resources/doc/services.md) 
+* [Mailcachter SMTP](Resources/doc/services.md) 
 
 ### Footnotes
 
