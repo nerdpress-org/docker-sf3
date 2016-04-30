@@ -16,7 +16,7 @@ Do this manually and edit *docker-env* for your local settings, if you need to c
 
 ## Usage
 
-    ./docker.sh l
+    ./docker.sh -l
     
 This will build and start all containers and log you into the symfony container as _www-data_.  
 [» More startup options ](Resources/doc/startup.md)
