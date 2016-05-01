@@ -31,7 +31,7 @@ This will build and start all containers and log you into the symfony container 
 
 ![bash](Resources/doc/bash.png)
 
-Open the browser: [http://[yourhost<sup>*</sup>]:8080](http://[yourhost]:8080) 
+Open the browser: [http://[docker-host]:8080](http://[docker-host]:8080) 
 
 ### PHP
 
@@ -58,14 +58,9 @@ Its configured to be open for access from outside,
 so if you prefer to use MySql Workbench on the host, use the containers IP as host.  
 Find the IP with: `docker inspect --format '{{ .NetworkSettings.IPAddress }} {{ .Name }}' $(docker ps -q)`
 
-Otherwise use phpmyadmin on http://[yourhost*]:8081
+Otherwise use phpmyadmin on [http://[docker-host]:8081](http://[docker-host]:8081) 
 
 ### Other Services
 
 * [Elasticsearch](Resources/doc/services.md) 
 * [Mailcachter SMTP](Resources/doc/services.md) 
-
-### Footnotes
-
-\* [yourhost] is *localhost* if you are on Linux,  
-*local.docker* if you are using [dlite](https://github.com/nlf/dlite) or the IP of the VM that runs docker
