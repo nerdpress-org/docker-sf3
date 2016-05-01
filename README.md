@@ -20,9 +20,7 @@ permission-hassle free <sup>:tm:</sup> [» More](/Resources/doc/permissions.md)
     git clone https://github.com/nerdpress-org/docker-sf3.git docker-sf3
     cp -r docker-sf3/docker* /path/to/your/symfony-project/
     cd /path/to/your/symfony-project/
-    
-On first startup the *docker-env.dist* file will be copied to the *docker-env* which will be used.  
-Do this manually and edit *docker-env* for your local settings, if you need to change values initally.  
+
 
 ## Usage
 
@@ -30,6 +28,8 @@ Do this manually and edit *docker-env* for your local settings, if you need to c
     
 This will build and start all containers and log you into the symfony container as _www-data_.  
 [» More startup options ](Resources/doc/startup.md)
+
+![bash][Resources/doc/bash.png]
 
 Open the browser: [http://[yourhost<sup>*</sup>]:8080](http://[yourhost]:8080) 
 

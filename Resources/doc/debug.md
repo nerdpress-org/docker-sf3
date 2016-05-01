@@ -1,4 +1,9 @@
-#### Xdebug
+# Debug
+
+On first startup the *docker-env.dist* file will be copied to the *docker-env* which will be used.  
+Do this manually and edit *docker-env* for your local settings, if you need to change values initally.  
+
+## Xdebug
 
 Xdebug is activated. 
 Change the ini settings for f.e. remote_host in the *docker-env* file according to your docker setup.  
@@ -11,7 +16,7 @@ Now set some breakpoint and call your site with ide key as GET param or in a coo
 
 Happy debugging :)
 
-#### Blackfire
+## Blackfire
 
 Blackfire client and agent are provided by the official Docker image.  
 The probe is integrated in the PHP container.  
