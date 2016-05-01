@@ -29,7 +29,7 @@ permission-hassle free <sup>:tm:</sup> [» More](/Resources/doc/permissions.md)
 This will build and start all containers and log you into the symfony container as _www-data_.  
 [» More startup options ](Resources/doc/startup.md)
 
-![bash][./Resources/doc/bash.png]
+![bash](Resources/doc/bash.png)
 
 Open the browser: [http://[yourhost<sup>*</sup>]:8080](http://[yourhost]:8080) 
 
