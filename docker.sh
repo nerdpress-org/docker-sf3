@@ -37,6 +37,9 @@ fi
 docker-compose build
 docker-compose up $upOption
 
+##make ssh files accessable for www-data
+docker exec -it $containerName chown -R www-data:www-data /var/www/.ssh
+
 if [ $login = true ]; then
 	docker exec -it -u www-data $containerName bash
 	docker-compose stop
