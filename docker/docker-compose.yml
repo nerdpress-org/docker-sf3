@@ -1,6 +1,6 @@
 #apache/php
 sf_web:
-    build: docker/apache-php
+    build: apache-php
     hostname: "sf3"
     container_name: "sf_web"
     ports:

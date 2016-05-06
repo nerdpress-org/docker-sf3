@@ -19,12 +19,12 @@ permission-hassle free <sup>:tm:</sup> [» More](/Resources/doc/permissions.md)
 
     git clone https://github.com/nerdpress-org/docker-sf3.git docker-sf3
     cp -r docker-sf3/docker /path/to/your/symfony-project/
-    cd /path/to/your/symfony-project/
+    cd /path/to/your/symfony-project/docker
 
 
 ## Usage
 
-    ./docker/docker.sh -l
+    ./docker.sh -l
     
 This will build and start all containers and log you into the symfony container as _www-data_.  
 [» More startup options ](Resources/doc/startup.md)
