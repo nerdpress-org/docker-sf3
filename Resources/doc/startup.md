@@ -2,11 +2,11 @@
 
 Setup environment, start all containers and display logs in stdout:  
 
-    ./docker.sh
+    ./docker/docker.sh
 
 If you want be logged in automatically use:  
 
-    ./docker.sh -l
+    ./docker/docker.sh -l
 
 This will log you into the `sf_web` container as _www-data_    
 and shutdown all containers when you log out.
@@ -17,9 +17,9 @@ To manually log in the container run
      
 or use the shortcut:
  
-     ./docker-ssh.sh 
+     ./docker/docker-ssh.sh 
      
 
 To start te container up into the background use:
 
-    ./docker.sh -d
+    ./docker/docker.sh -d
