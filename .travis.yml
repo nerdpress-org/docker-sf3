@@ -7,9 +7,9 @@ services:
 
 before_script:
     - composer create-project symfony/framework-standard-edition sf3_project
-    - cp -r ./docker* sf3_project
+    - cp -r ./docker sf3_project
     - cd sf3_project
-    - sh ./docker.sh -d
+    - sh ./docker/docker.sh -d
 
 script:
     - docker exec -it -u www-data sf_web composer require phpunit/phpunit
