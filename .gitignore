@@ -1,5 +1,6 @@
 docker/data/sql
 docker/data/elasticsearch
+docker/data/known_hosts
 docker/apache-php/Dockerfile
 docker/data/.bash_history
 docker-env
