@@ -1,13 +1,13 @@
 #apache/php
 sf_web:
-    build: docker/apache-php
+    build: apache-php
     hostname: "sf3"
     container_name: "sf_web"
     ports:
         - 8080:80   #apache
         - 9001:9000 #xdebug
     volumes:
-        - "./:/var/www/html"
+        - "../:/var/www/html"
     links:
         - db
         - elasticsearch
@@ -28,8 +28,8 @@ db:
         MYSQL_PASSWORD: sf3
         MYSQL_ROOT_PASSWORD: root
     volumes:
-    - ./docker/data/sql:/var/lib/mysql
-    - ./docker/mysql/my.cnf:/etc/mysql/conf.d/z_my.cnf
+    - ./data/sql:/var/lib/mysql
+    - ./mysql/my.cnf:/etc/mysql/conf.d/z_my.cnf
 
 
 #phpmyadmin
@@ -54,7 +54,7 @@ elasticsearch:
     image: "elasticsearch:1.3"
     container_name: "sf_elasticsearch"
     volumes:
-        - "./docker/data/elasticsearch/:/usr/share/elasticsearch/data"
+        - "./data/elasticsearch/:/usr/share/elasticsearch/data"
     ports:
         - 9201:9200
 
