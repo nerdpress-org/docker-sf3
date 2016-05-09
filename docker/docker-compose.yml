@@ -8,11 +8,15 @@ sf_web:
         - 9001:9000 #xdebug
     volumes:
         - "../:/var/www/html"
+        - $SSH_AUTH_SOCK:$SSH_AUTH_SOCK
+        - "~/.composer:/var/www/.composer"
     links:
         - db
         - elasticsearch
         - mailcatcher
         - blackfire
+    environment:
+        - SSH_AUTH_SOCK=$SSH_AUTH_SOCK
     env_file:
         - docker-env
 
@@ -21,15 +25,15 @@ db:
     image: mysql:latest
     container_name: "sf_db"
     ports:
-    - 3306
+        - 3306
     environment:
         MYSQL_DATABASE: sf3
         MYSQL_USER: sf3
         MYSQL_PASSWORD: sf3
         MYSQL_ROOT_PASSWORD: root
     volumes:
-    - ./data/sql:/var/lib/mysql
-    - ./mysql/my.cnf:/etc/mysql/conf.d/z_my.cnf
+        - ./data/sql:/var/lib/mysql
+        - ./mysql/my.cnf:/etc/mysql/conf.d/z_my.cnf
 
 
 #phpmyadmin
