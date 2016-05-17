@@ -1,6 +1,6 @@
 #apache/php
 sf_web:
-    build: docker/apache-php
+    build: apache-php
     hostname: "sf3"
     container_name: "sf_web"
     ports:
@@ -9,7 +9,6 @@ sf_web:
     volumes:
         - "../:/var/www/html"
         - "~/.composer:/var/www/.composer"
-        - "~/.ssh:/var/www/.ssh"
     links:
         - db
         - elasticsearch
