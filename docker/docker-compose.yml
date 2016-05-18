@@ -8,6 +8,7 @@ sf_web:
         - 9001:9000 #xdebug
     volumes:
         - "../:/var/www/html"
+        - "~/.composer:/var/www/.composer"
     links:
         - db
         - elasticsearch
@@ -67,8 +68,10 @@ mailcatcher:
         - 1025:1025
         - 1080:1080
 
+#blackfire
 blackfire:
-  restart: always
-  image: blackfire/blackfire
-  env_file:
-    - docker-env
+    restart: always
+    container_name: "sf_blackfire"
+    image: blackfire/blackfire
+    env_file:
+        - docker-env
