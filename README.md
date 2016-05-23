@@ -63,4 +63,4 @@ Otherwise use phpmyadmin on [http://[docker-host]:8081](http://[docker-host]:808
 ### Other Services
 
 * [Elasticsearch](Resources/doc/services.md) 
-* [Mailcachter SMTP](Resources/doc/services.md) 
+* [Mailcatcher SMTP](Resources/doc/services.md) 

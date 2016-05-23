@@ -44,6 +44,9 @@ docker exec $containerName chown -R www-data /var/www/.ssh
 ##make ssh files accessable for www-data
 docker exec -it $containerName chown -R www-data:www-data /var/www/.ssh
 
+##composer selfupdate
+docker exec -it $containerName composer selfupdate
+
 if [ $login = true ]; then
 	docker exec -it -u www-data $containerName bash
 	docker-compose stop
