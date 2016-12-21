@@ -1,7 +1,7 @@
 FROM php:7-apache
 
 RUN a2enmod rewrite
-RUN chmod -R go+rwxs /var/www
+RUN chmod -R UG+rwxs /var/www
 
 RUN RUNTIME_PKGS="vim git zip mcrypt mysql-client htop ssh-client libicu52 libjpeg62-turbo libpng12-0 libfreetype6" \
     && apt-get update && apt-get install -y --no-install-recommends $RUNTIME_PKGS \
