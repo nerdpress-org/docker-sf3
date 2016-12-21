@@ -36,7 +36,7 @@ RUN export VERSION=`php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;"` \
     && rm -rf /tmp/* /var/tmp/* 
 
 
-RUN chmod -R go+rwx /var/www
+RUN chmod -R go+rwxs /var/www
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer global require hirak/prestissimo \
     && rm -rf /tmp/* /var/tmp/* 
