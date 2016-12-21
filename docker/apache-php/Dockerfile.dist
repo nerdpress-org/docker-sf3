@@ -1,32 +1,28 @@
 FROM php:7-apache
 
 RUN a2enmod rewrite
+RUN chmod -R ug+rwxs /var/www
 
-RUN apt-get update && apt-get install -y -qq \
-        vim \
-        zlib1g-dev \
-        libicu-dev \
-        git \
-        zip \
-        g++ \
-        mysql-client \
-        htop \
-        openssh-client \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libmcrypt-dev \
-        libpng12-dev \
-        make
+RUN RUNTIME_PKGS="vim git zip mcrypt mysql-client htop ssh-client libicu52 libjpeg62-turbo libpng12-0 libfreetype6" \
+    && apt-get update && apt-get install -y --no-install-recommends $RUNTIME_PKGS \
+    && apt-get autoremove -y && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
+      
+ADD docker-php-pecl-install /usr/local/bin/
+RUN chmod u+x /usr/local/bin/docker-php-pecl-install
 
-RUN docker-php-ext-install -j$(nproc) iconv mcrypt mbstring exif zip opcache pdo_mysql pcntl \
+
+RUN BUILD_PKGS="zlib1g-dev libicu-dev g++ libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev make" \
+    && apt-get update && apt-get install -y --no-install-recommends $BUILD_PKGS \
+    && docker-php-ext-install -j$(nproc) iconv mcrypt mbstring exif zip opcache pdo_mysql pcntl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-configure intl \
-    && docker-php-ext-install intl
-
-ADD docker-php-pecl-install /usr/local/bin/
-RUN chmod u+x /usr/local/bin/docker-php-pecl-install
-RUN docker-php-pecl-install xdebug
+    && docker-php-ext-install intl \
+    && docker-php-pecl-install xdebug \
+    && apt-get autoremove -y $BUILD_PKGS \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 RUN sed -i '1 a xdebug.remote_autostart=true' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
 RUN sed -i '1 a xdebug.remote_connect_back=1 ' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
@@ -37,16 +33,17 @@ RUN export VERSION=`php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;"` \
     && curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/${VERSION} \
     && tar zxpf /tmp/blackfire-probe.tar.gz -C /tmp \
     && mv /tmp/blackfire-*.so `php -r "echo ini_get('extension_dir');"`/blackfire.so \
-    && echo "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707" > /usr/local/etc/php/conf.d/blackfire.ini
+    && echo "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707" > /usr/local/etc/php/conf.d/blackfire.ini \
+    && rm -rf /tmp/* /var/tmp/* 
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer&& \
-         composer global require hirak/prestissimo
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && composer global require hirak/prestissimo \
+    && rm -rf /tmp/* /var/tmp/* 
 
 COPY php.ini /usr/local/etc/php/
 COPY bashrc.dist /var/www/.bashrc
-RUN ln -s /var/www/html/docker/data/.bash_history /var/www/.bash_history
 COPY apache2.conf /etc/apache2/apache2.conf
 
-RUN usermod -u $USER_ID www-data -s /bin/bash
+RUN useradd --shell /bin/bash --uid $USER_ID --non-unique --gid www-data --base-dir /var/www -m user
 
 WORKDIR /var/www/html
