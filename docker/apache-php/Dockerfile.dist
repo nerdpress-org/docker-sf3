@@ -1,6 +1,7 @@
 FROM php:7-apache
 
 RUN a2enmod rewrite
+RUN chmod -R go+rwxs /var/www
 
 RUN RUNTIME_PKGS="vim git zip mcrypt mysql-client htop ssh-client libicu52 libjpeg62-turbo libpng12-0 libfreetype6" \
     && apt-get update && apt-get install -y --no-install-recommends $RUNTIME_PKGS \
@@ -35,10 +36,10 @@ RUN export VERSION=`php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;"` \
     && echo "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707" > /usr/local/etc/php/conf.d/blackfire.ini \
     && rm -rf /tmp/* /var/tmp/* 
 
-
-RUN chmod -R go+rwxs /var/www
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+RUN pushd /tmp \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer global require hirak/prestissimo \
+    && popd \
     && rm -rf /tmp/* /var/tmp/* 
 
 COPY php.ini /usr/local/etc/php/
