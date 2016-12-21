@@ -12,6 +12,6 @@ before_script:
     - sh ./docker.sh -d
 
 script:
-    - docker exec -it sf_web composer require phpunit/phpunit
-    - docker exec -it sf_web vendor/phpunit/phpunit/phpunit
+    - docker exec -u user -it sf_web composer require phpunit/phpunit
+    - docker exec -u user -it sf_web vendor/phpunit/phpunit/phpunit
     - docker-compose stop
