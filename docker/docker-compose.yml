@@ -76,3 +76,21 @@ blackfire:
     image: blackfire/blackfire
     env_file:
         - docker-env
+
+logio_harvester:
+    image: temal/logio-harvester
+    container_name: "sf_logio_harvester"
+    links:
+        - logio_server
+        - sf_web
+    volumes:
+        - "./logio/:/home/logio/.log.io"
+    volumes_from:
+        - sf_web
+
+logio_server:
+    image: temal/logio-server
+    container_name: "sf_logio_server"
+    ports:
+        - 28777:28777
+        - 28778:28778
