@@ -21,7 +21,7 @@ done
 
 containerName="sf_web"
 
-##grab host uid
+##Update Apache UID
 uid=$(id -u)
 if [ $uid -gt 100000 ]; then
 	uid=1000
