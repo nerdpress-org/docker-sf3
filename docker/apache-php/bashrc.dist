@@ -5,6 +5,20 @@
 ## enable git bash support
 source /etc/bash_completion.d/git-prompt
 
+BLACK=$(tput -Txterm setaf 0)
+RED=$(tput -Txterm setaf 1)
+GREEN=$(tput -Txterm setaf 2)
+YELLOW=$(tput -Txterm setaf 3)
+DK_BLUE=$(tput -Txterm setaf 4)
+PINK=$(tput -Txterm setaf 5)
+LT_BLUE=$(tput -Txterm setaf 6)
+
+bold=$(tput -Txterm bold)
+reset=$(tput -Txterm sgr0)
+
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
 __has_parent_dir () {
      # Utility function so we can test for things like .git/.hg without firing up a
      # separate process
@@ -23,30 +37,15 @@ __has_parent_dir () {
 
 __vcs_name() {
      if [ -d .svn ]; then
-         echo "-[svn]";
+         echo -e "-[$YELLOWsvn$BLACK]";
      elif __has_parent_dir ".git"; then
-         echo "-[$(__git_ps1 'git %s')]";
+         echo -e "-[$YELLOW$(__git_ps1 'git %s')$BLACK]";
      elif __has_parent_dir ".hg"; then
-         echo "-[hg $(hg branch)]"
+         echo -e "-[$YELLOWhg $(hg branch)$BLACK]"
      fi
 }
 
-BLACK=$(tput -Txterm setaf 0)
-RED=$(tput -Txterm setaf 1)
-GREEN=$(tput -Txterm setaf 2)
-YELLOW=$(tput -Txterm setaf 3)
-DK_BLUE=$(tput -Txterm setaf 4)
-PINK=$(tput -Txterm setaf 5)
-LT_BLUE=$(tput -Txterm setaf 6)
-
-bold=$(tput -Txterm bold)
-reset=$(tput -Txterm sgr0)
-
-export CLICOLOR=1
-export LSCOLORS=ExFxCxDxBxegedabagacad
-
-#PS1='\n\[`[ $? = 0 ] && X=2 || X=1;`\]'$'\xf0\x9f\x9A\xA7''  \T $PWD\n>  '
-export PS1='\n\[$bold\]\[$BLACK\][\[$DK_BLUE\]\A\[$BLACK\]]-[\[$GREEN\]\u\[$GREEN\]@\[$GREEN\]\h\[$BLACK\]]-[\[$PINK\]\w\[$BLACK\]]\[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '
+export PS1='\n\[$bold\]\[$BLACK\][\[$DK_BLUE\]\A\[$BLACK\]]-[\[$GREEN\]\u\[$GREEN\]@\[$GREEN\]\h\[$BLACK\]]-[\[$PINK\]\w\[$BLACK\]]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '
 
 ###########################
 ## beautiful bash <3 end ##
