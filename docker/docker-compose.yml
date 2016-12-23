@@ -9,6 +9,7 @@ sf_web:
     volumes:
         - "../:/var/www/html"
         - "~/.composer:/var/www/.composer"
+        - ./apache-php/bashrc.dist:/var/www/.bashrc:ro
     links:
         - db
         - elasticsearch
