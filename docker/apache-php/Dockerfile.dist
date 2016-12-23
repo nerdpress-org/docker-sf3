@@ -43,7 +43,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
          composer global require hirak/prestissimo
 
 COPY php.ini /usr/local/etc/php/
-COPY bashrc.dist /var/www/.bashrc
 RUN ln -s /var/www/html/docker/data/.bash_history /var/www/.bash_history
 COPY apache2.conf /etc/apache2/apache2.conf
 
