@@ -21,7 +21,7 @@ done
 
 containerName="sf_web"
 
-##Update Apache UID
+##grab host uid
 uid=$(id -u)
 if [ $uid -gt 100000 ]; then
 	uid=1000
@@ -48,7 +48,7 @@ docker exec -it $containerName chown -R www-data:www-data /var/www/.ssh
 docker exec -it $containerName composer selfupdate
 
 if [ $login = true ]; then
-	docker exec -it -u www-data $containerName bash
+	docker exec -it -u user $containerName bash
 	docker-compose stop
 fi
 

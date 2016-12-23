@@ -65,3 +65,4 @@ alias c="clear"
 alias db="mysql -hdb -uroot -proot"
 
 export TERM=xterm
+umask 0007
