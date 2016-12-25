@@ -14,6 +14,8 @@ sf_web:
         - elasticsearch
         - mailcatcher
         - blackfire
+    depends_on:
+        - db
     env_file:
         - docker-env
 
@@ -38,6 +40,8 @@ pma:
     image: phpmyadmin/phpmyadmin
     container_name: "sf_pma"
     links:
+        - db
+    depends_on:
         - db
     ports:
         - 8081:80
