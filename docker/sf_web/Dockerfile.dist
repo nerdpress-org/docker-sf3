@@ -53,7 +53,7 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY php.ini /usr/local/etc/php/
 COPY zshrc.dist /var/www/.zshrc
 
-#Create Developer "user"" based on  Host UID (from docker.sh) and add UID to the www-data group
+#Overtake www-data
 RUN usermod -u $USER_ID www-data -s /bin/zsh
 
 #Install oh-my-zsh
