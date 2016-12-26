@@ -3,6 +3,7 @@ services:
     #apache/php
     sf_web:
         build: ./sf_web
+        image: sf_web
         depends_on:
             - "db"
         hostname: "sf3"
