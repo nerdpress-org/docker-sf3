@@ -7,11 +7,12 @@ RUN a2enmod rewrite
 RUN echo Europe/Berlin > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
 
 #Append software required during runtime here.
-RUN RUNTIME_PKGS="zsh curl vim git zip mcrypt mysql-client htop ssh-client libicu52 libjpeg62-turbo libpng12-0 libfreetype6" \
+RUN RUNTIME_PKGS="locales zsh curl vim git zip mcrypt mysql-client htop ssh-client libicu52 libjpeg62-turbo libpng12-0 libfreetype6" \
     && apt-get update && apt-get install -y --no-install-recommends $RUNTIME_PKGS \
     && apt-get autoremove -y && apt-get clean -y \
+    && locale-gen en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+    
 #PECL
 ADD docker-php-pecl-install /usr/local/bin/
 RUN chmod u+x /usr/local/bin/docker-php-pecl-install
