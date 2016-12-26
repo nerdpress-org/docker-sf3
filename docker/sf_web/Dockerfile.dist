@@ -53,13 +53,6 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY php.ini /usr/local/etc/php/
 COPY zshrc.dist /var/www/.zshrc
 
-#Appears like this section makes no sense with Docker (default) AUFS storage driver.
-#Set ACL
-#RUN setfacl -R -m u::rwx,g:www-data:rwx,o::r /var/www
-#Preserver ACL for new files.
-#RUN setfacl -R -dm u::rwx,g:www-data:rwx,o::r /var/www
-
-
 #Create Developer "user"" based on  Host UID (from docker.sh) and add UID to the www-data group
 RUN usermod -u $USER_ID www-data -s /bin/zsh
 
