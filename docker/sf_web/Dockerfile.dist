@@ -7,7 +7,7 @@ RUN a2enmod rewrite
 RUN echo Europe/Brussels > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
 
 #Append software required during runtime here.
-RUN RUNTIME_PKGS="vim git zip mcrypt mysql-client htop ssh-client libicu52 libjpeg62-turbo libpng12-0 libfreetype6" \
+RUN RUNTIME_PKGS="zsh curl vim git zip mcrypt mysql-client htop ssh-client libicu52 libjpeg62-turbo libpng12-0 libfreetype6" \
     && apt-get update && apt-get install -y --no-install-recommends $RUNTIME_PKGS \
     && apt-get autoremove -y && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
@@ -51,7 +51,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 #Populate Environment
 COPY php.ini /usr/local/etc/php/
 COPY apache2.conf /etc/apache2/apache2.conf
-COPY bashrc.dist /var/www/.bashrc
+COPY zshrc.dist /var/www/.zshrc
 
 #Appears like this section makes no sense with Docker (default) AUFS storage driver.
 #Set ACL
@@ -59,8 +59,13 @@ COPY bashrc.dist /var/www/.bashrc
 #Preserver ACL for new files.
 #RUN setfacl -R -dm u::rwx,g:www-data:rwx,o::r /var/www
 
+
 #Create Developer "user"" based on  Host UID (from docker.sh) and add UID to the www-data group
-RUN useradd --shell /bin/bash --uid $USER_ID --non-unique --gid www-data --home /var/www -m user
+RUN useradd --shell /bin/zsh --uid $USER_ID --non-unique --gid www-data --home /var/www -m user
+
+#Install oh-my-zsh
+ENV TERM=xterm
+RUN git clone git://github.com/robbyrussell/oh-my-zsh.git /var/www/.oh-my-zsh
 
 #Fix permissions and umask
 RUN chgrp -R www-data /var/www

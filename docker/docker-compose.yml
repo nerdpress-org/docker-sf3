@@ -1,77 +1,82 @@
-#apache/php
-sf_web:
-    build: apache-php
-    hostname: "sf3"
-    container_name: "sf_web"
-    ports:
-        - 8080:80   #apache
-        - 9001:9000 #xdebug
-    volumes:
-        - "../:/var/www/html"
-        - "~/.composer:/var/www/.composer"
-    links:
-        - db
-        - elasticsearch
-        - mailcatcher
-        - blackfire
-    env_file:
-        - docker-env
+version: '2'
+services:
+    #apache/php
+    sf_web:
+        build: ./sf_web
+        depends_on: 
+            - "db"
+        hostname: "sf3"
+        container_name: "sf_web"
+        ports:
+            - 8080:80   #apache
+            - 9001:9000 #xdebug
+        volumes:
+            - "../:/var/www/html"
+            - "~/.composer:/var/www/.composer"
+        links:
+            - db
+            - elasticsearch
+            - mailcatcher
+            - blackfire
+        env_file:
+            - docker-env
 
-#mysql
-db:
-    image: mysql:latest
-    container_name: "sf_db"
-    ports:
-    - 3306
-    environment:
-        MYSQL_DATABASE: sf3
-        MYSQL_USER: sf3
-        MYSQL_PASSWORD: sf3
-        MYSQL_ROOT_PASSWORD: root
-    volumes:
-    - ./data/sql:/var/lib/mysql
-    - ./mysql/my.cnf:/etc/mysql/conf.d/z_my.cnf
+    #mysql
+    db:
+        image: mysql:latest
+        container_name: "sf_db"
+        ports:
+        - 3306
+        environment:
+            MYSQL_DATABASE: sf3
+            MYSQL_USER: sf3
+            MYSQL_PASSWORD: sf3
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+        - ./data/sql:/var/lib/mysql
+        - ./mysql/my.cnf:/etc/mysql/conf.d/z_my.cnf
 
-
-#phpmyadmin
-pma:
-    image: phpmyadmin/phpmyadmin
-    container_name: "sf_pma"
-    links:
-        - db
-    ports:
-        - 8081:80
-    restart: always
-    environment:
-        - PMA_ARBITRARY=1
-        - PMA_PORT=3306
-        - PMA_HOST=db
-        - PMA_USER=root
-        - PMA_PASSWORD=root
-
-
-#elasticsearch
-elasticsearch:
-    image: "elasticsearch:1.3"
-    container_name: "sf_elasticsearch"
-    volumes:
-        - "./data/elasticsearch/:/usr/share/elasticsearch/data"
-    ports:
-        - 9201:9200
+    #phpmyadmin
+    pma:
+        image: phpmyadmin/phpmyadmin
+        container_name: "sf_pma"
+        links:
+            - db
+        depends_on: 
+            - "db"
+        ports:
+            - 8081:80
+        restart: always
+        environment:
+            - PMA_ARBITRARY=1
+            - PMA_PORT=3306
+            - PMA_HOST=db
+            - PMA_USER=root
+            - PMA_PASSWORD=root
 
 
-#mailcatcher
-mailcatcher:
-    container_name: "sf_mailcatcher"
-    image: yappabe/mailcatcher
-    ports:
-        - 1025:1025
-        - 1080:1080
+    #elasticsearch
+    elasticsearch:
+        image: "elasticsearch:1.3"
+        container_name: "sf_elasticsearch"
+        volumes:
+            - "./data/elasticsearch/:/usr/share/elasticsearch/data"
+        ports:
+            - 9201:9200
 
-#blackfire
-blackfire:
-    restart: always
-    container_name: "sf_blackfire"
-    image: blackfire/blackfire
-    env_file:
-        - docker-env
+
+    #mailcatcher
+    mailcatcher:
+        container_name: "sf_mailcatcher"
+        image: yappabe/mailcatcher
+        ports:
+            - 1025:1025
+            - 1080:1080
+
+    #blackfire
+    blackfire:
+        restart: always
+        container_name: "sf_blackfire"
+        image: blackfire/blackfire
+        env_file:
+            - docker-env
