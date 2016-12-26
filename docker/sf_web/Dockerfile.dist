@@ -4,7 +4,7 @@ FROM php:7-apache
 RUN a2enmod rewrite
 
 #Change your timezone below. Full list of timezones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-RUN echo Europe/Brussels > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
+RUN echo Europe/Berlin > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
 
 #Append software required during runtime here.
 RUN RUNTIME_PKGS="zsh curl vim git zip mcrypt mysql-client htop ssh-client libicu52 libjpeg62-turbo libpng12-0 libfreetype6" \
@@ -61,7 +61,7 @@ COPY zshrc.dist /var/www/.zshrc
 
 
 #Create Developer "user"" based on  Host UID (from docker.sh) and add UID to the www-data group
-RUN useradd --shell /bin/zsh --uid $USER_ID --non-unique --gid www-data --home /var/www -m user
+RUN usermod -u $USER_ID www-data -s /bin/zsh
 
 #Install oh-my-zsh
 ENV TERM=xterm
