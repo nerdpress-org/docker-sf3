@@ -51,7 +51,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 #Populate Environment
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY php.ini /usr/local/etc/php/
-COPY apache2.conf /etc/apache2/apache2.conf
 COPY zshrc.dist /var/www/.zshrc
 
 #Appears like this section makes no sense with Docker (default) AUFS storage driver.
