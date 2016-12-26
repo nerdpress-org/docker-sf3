@@ -2,7 +2,7 @@ version: '2'
 services:
     #apache/php
     sf_web:
-        build: apache-php
+        build: ./sf_web
         depends_on: 
             - "db"
         hostname: "sf3"
@@ -35,7 +35,6 @@ services:
         volumes:
         - ./data/sql:/var/lib/mysql
         - ./mysql/my.cnf:/etc/mysql/conf.d/z_my.cnf
-
 
     #phpmyadmin
     pma:

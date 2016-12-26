@@ -27,7 +27,7 @@ if [ $uid -gt 100000 ]; then
 	uid=1000
 fi
 
-sed "s/\$USER_ID/$uid/g" ./apache-php/Dockerfile.dist > ./apache-php/Dockerfile
+sed "s/\$USER_ID/$uid/g" ./sf_web/Dockerfile.dist > ./sf_web/Dockerfile
 
 if [ ! -e ./docker-env ]; then
     cp ./docker-env.dist ./docker-env
