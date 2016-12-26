@@ -3,7 +3,7 @@ services:
     #apache/php
     sf_web:
         build: ./sf_web
-        depends_on: 
+        depends_on:
             - "db"
         hostname: "sf3"
         container_name: "sf_web"
@@ -13,6 +13,7 @@ services:
         volumes:
             - "../:/var/www/html"
             - "~/.composer:/var/www/.composer"
+            - ./sf_web/bashrc.dist:/var/www/.bashrc:ro
         links:
             - db
             - elasticsearch
@@ -42,7 +43,7 @@ services:
         container_name: "sf_pma"
         links:
             - db
-        depends_on: 
+        depends_on:
             - "db"
         ports:
             - 8081:80
