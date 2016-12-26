@@ -64,7 +64,8 @@ COPY zshrc.dist /var/www/.zshrc
 RUN useradd --shell /bin/zsh --uid $USER_ID --non-unique --gid www-data --home /var/www -m user
 
 #Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+ENV TERM=xterm
+RUN git clone git://github.com/robbyrussell/oh-my-zsh.git /var/www/.oh-my-zsh
 
 #Fix permissions and umask
 RUN chgrp -R www-data /var/www
