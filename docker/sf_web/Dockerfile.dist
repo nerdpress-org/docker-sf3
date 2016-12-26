@@ -1,5 +1,6 @@
 FROM php:7-apache
 
+
 #Enable necessary Apache modules
 RUN a2enmod rewrite
 
@@ -7,10 +8,17 @@ RUN a2enmod rewrite
 RUN echo Europe/Berlin > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
 
 #Append software required during runtime here.
-RUN RUNTIME_PKGS="zsh curl vim git zip mcrypt mysql-client htop ssh-client libicu52 libjpeg62-turbo libpng12-0 libfreetype6" \
+RUN RUNTIME_PKGS="locales zsh curl vim git zip mcrypt mysql-client htop ssh-client libicu52 libjpeg62-turbo libpng12-0 libfreetype6" \
     && apt-get update && apt-get install -y --no-install-recommends $RUNTIME_PKGS \
     && apt-get autoremove -y && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Set the locale
+RUN locale-gen en_US.UTF-8 UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8  
+
 
 #PECL
 ADD docker-php-pecl-install /usr/local/bin/
