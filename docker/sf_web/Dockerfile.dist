@@ -4,14 +4,15 @@ FROM php:7-apache
 RUN a2enmod rewrite
 
 #Change your timezone below. Full list of timezones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-RUN echo Europe/Brussels > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
+RUN echo Europe/Berlin > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
 
 #Append software required during runtime here.
-RUN RUNTIME_PKGS="zsh curl vim git zip mcrypt mysql-client htop ssh-client libicu52 libjpeg62-turbo libpng12-0 libfreetype6" \
+RUN RUNTIME_PKGS="locales zsh curl vim git zip mcrypt mysql-client htop ssh-client libicu52 libjpeg62-turbo libpng12-0 libfreetype6" \
     && apt-get update && apt-get install -y --no-install-recommends $RUNTIME_PKGS \
     && apt-get autoremove -y && apt-get clean -y \
+    && locale-gen en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+    
 #PECL
 ADD docker-php-pecl-install /usr/local/bin/
 RUN chmod u+x /usr/local/bin/docker-php-pecl-install
@@ -53,15 +54,8 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY php.ini /usr/local/etc/php/
 COPY zshrc.dist /var/www/.zshrc
 
-#Appears like this section makes no sense with Docker (default) AUFS storage driver.
-#Set ACL
-#RUN setfacl -R -m u::rwx,g:www-data:rwx,o::r /var/www
-#Preserver ACL for new files.
-#RUN setfacl -R -dm u::rwx,g:www-data:rwx,o::r /var/www
-
-
-#Create Developer "user"" based on  Host UID (from docker.sh) and add UID to the www-data group
-RUN useradd --shell /bin/zsh --uid $USER_ID --non-unique --gid www-data --home /var/www -m user
+#Overtake www-data
+RUN usermod -u $USER_ID www-data -s /bin/zsh
 
 #Install oh-my-zsh
 ENV TERM=xterm
