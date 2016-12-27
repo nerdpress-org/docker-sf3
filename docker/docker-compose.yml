@@ -70,7 +70,7 @@ services:
     #mailcatcher
     mailcatcher:
         container_name: "sf_mailcatcher"
-        image: yappabe/mailcatcher
+        image: schickling/mailcatcher
         ports:
             - 1025:1025
             - 1080:1080
