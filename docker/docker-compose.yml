@@ -15,7 +15,7 @@ services:
         volumes:
             - "../:/var/www/html"
             - "~/.composer:/var/www/.composer"
-            - ./sf_web/bashrc.dist:/var/www/.bashrc:ro
+            - ./sf_web/zshrc.dist:/var/www/.zshrc:ro
         links:
             - db
             - elasticsearch

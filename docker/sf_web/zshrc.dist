@@ -83,3 +83,15 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias ls='ls -F --color=always'
+alias dir='dir -F --color=always'
+alias cp='cp -iv'
+alias rm='rm -i'
+alias mv='mv -iv'
+alias grep='grep --color=auto -in'
+alias ll="ls -ahl"
+alias sf="php bin/console"
+alias sfcc="sf cache:clear"
+alias c="clear"
+alias db="mysql -hdb -uroot -proot"
