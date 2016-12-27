@@ -56,7 +56,6 @@ services:
             - PMA_USER=root
             - PMA_PASSWORD=root
 
-
     #elasticsearch
     elasticsearch:
         image: "elasticsearch:1.3"
@@ -65,7 +64,6 @@ services:
             - "./data/elasticsearch/:/usr/share/elasticsearch/data"
         ports:
             - 9201:9200
-
 
     #mailcatcher
     mailcatcher:
