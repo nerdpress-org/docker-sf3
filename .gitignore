@@ -1,5 +1,5 @@
 docker/data/sql
 docker/data/elasticsearch
-docker/apache-php/Dockerfile
+docker/sf_web/Dockerfile
 docker/data/.bash_history
 docker/docker-env

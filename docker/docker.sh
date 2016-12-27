@@ -21,13 +21,13 @@ done
 
 containerName="sf_web"
 
-##grab host uid
+##Update Apache UID
 uid=$(id -u)
 if [ $uid -gt 100000 ]; then
 	uid=1000
 fi
 
-sed "s/\$USER_ID/$uid/g" ./apache-php/Dockerfile.dist > ./apache-php/Dockerfile
+sed "s/\$USER_ID/$uid/g" ./sf_web/Dockerfile.dist > ./sf_web/Dockerfile
 
 if [ ! -e ./docker-env ]; then
     cp ./docker-env.dist ./docker-env
@@ -48,7 +48,7 @@ docker exec -it $containerName chown -R www-data:www-data /var/www/.ssh
 docker exec -it $containerName composer selfupdate
 
 if [ $login = true ]; then
-	docker exec -it -u user $containerName bash
+	docker exec -it -u user $containerName zsh
 	docker-compose stop
 fi
 
