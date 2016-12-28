@@ -55,6 +55,7 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 #Overtake www-data, set zsh shell, append (!) groups sudo and adm
 RUN usermod -u $USER_ID www-data -s /bin/zsh -a -G sudo,adm
+RUN echo "www-data ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers
 
 #Install oh-my-zsh
 ENV TERM=xterm
