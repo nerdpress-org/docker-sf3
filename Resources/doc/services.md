@@ -1,6 +1,6 @@
 
 ### Elasticsearch
-Uses the official [https://hub.docker.com/_/elasticsearch](Elasticsearch Alpine) image.
+Uses the official [Elasticsearch Alpine](https://hub.docker.com/_/elasticsearch) image.
 ```yml
 host: elasticsearch
 port: 9200

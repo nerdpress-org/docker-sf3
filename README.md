@@ -39,8 +39,8 @@ Open the browser: [http://[docker-host]:8080](http://[docker-host]:8080)
 
 ## PHP7 on Apache 2.4 (http2 enabled)
 
-from the [https://launchpad.net/~ondrej](Ondřej Surý PPA)
-running on [https://hub.docker.com/_/ubuntu/](Ubuntu:Xenial) Docker Image.
+from the [Ondřej Surý PPA](https://launchpad.net/~ondrej)
+running on [Ubuntu:Xenial](https://hub.docker.com/_/ubuntu/) Docker Image.
 
 ### Debugging & Tools.
 
@@ -54,7 +54,7 @@ https://github.com/datadarius/docker-sf3/tree/ubuntu/docker/sf_web
 
 
 ## DB
-Official (https://hub.docker.com/r/mysql/mysql-server/)[MySQL:5] Docker is used.  
+Official [MySQL:5](https://hub.docker.com/r/mysql/mysql-server/) Docker is used.  
 Use the name of the service as the database host in your connection settings:
 
 ```yml
