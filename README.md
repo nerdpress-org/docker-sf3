@@ -47,7 +47,7 @@ running on Ubuntu:Xenial.
 Xdebug and Blackfire.io support are included by default.   
 [» How to configure](Resources/doc/debug.md) 
 
-    [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is the default shell.
+[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is the default shell.
 
 ## DB
 Official MySQL Docker [https://hub.docker.com/r/mysql/mysql-server/](mysql:5) is used.  
@@ -62,11 +62,12 @@ Use the name of the service as the database host in your connection settings:
     database_password: sf3
     ```
 
-    Its configured to be open for access from outside,  
-    so if you prefer to use MySql Workbench on the host, use the containers IP as host.  
-    Find the IP with: `docker inspect --format '{{ .NetworkSettings.IPAddress }} {{ .Name }}' $(docker ps -q)`
+Its configured to be open for access from outside,  
+so if you prefer to use MySql Workbench on the host, use the containers IP as host.  
+Find the IP with: 
+    `docker inspect --format '{{ .NetworkSettings.IPAddress }} {{ .Name }}' $(docker ps -q)`
 
-# Otherwise use phpmyadmin on [http://[docker-host]:8081](http://[docker-host]:8081) 
+### Otherwise use official phpmyadmin docker on [http://[docker-host]:8081](http://[docker-host]:8081) 
 
 ### Other Services
 
