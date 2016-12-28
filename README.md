@@ -40,7 +40,7 @@ Open the browser: [http://[docker-host]:8080](http://[docker-host]:8080)
 ## PHP7 on Apache 2.4 (http2 enabled)
 
 from the [https://launchpad.net/~ondrej](Ondřej Surý PPA)
-running on Ubuntu:Xenial.
+running on [https://hub.docker.com/_/ubuntu/](Ubuntu:Xenial) Docker Image.
 
 ### Debugging & Tools.
 
@@ -49,8 +49,12 @@ Xdebug and Blackfire.io support are included by default.
 
 [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is the default shell.
 
+The Dockerfile can be found here:
+https://github.com/datadarius/docker-sf3/tree/ubuntu/docker/sf_web
+
+
 ## DB
-Official MySQL Docker [https://hub.docker.com/r/mysql/mysql-server/](mysql:5) is used.  
+Official (https://hub.docker.com/r/mysql/mysql-server/)[MySQL:5] Docker is used.  
 Use the name of the service as the database host in your connection settings:
 
 ```yml
@@ -74,7 +78,9 @@ Find the IP with:
 * [Elasticsearch](Resources/doc/services.md) 
 * [Mailcatcher SMTP](Resources/doc/services.md) 
 
-### settings
+
+###Customizing Environment
+TODO
 Locale is en_US.UTF-8
 Timezone is set to Europe/Berlin
 
