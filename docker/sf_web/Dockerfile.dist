@@ -12,10 +12,6 @@ RUN RUNTIME_PKGS="locales zsh curl vim git zip mcrypt mysql-client htop ssh-clie
     && apt-get autoremove -y && apt-get clean -y \
     && locale-gen en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-    
-#PECL
-ADD docker-php-pecl-install /usr/local/bin/
-RUN chmod u+x /usr/local/bin/docker-php-pecl-install
 
 #Append software required during build here.
 RUN BUILD_PKGS="zlib1g-dev libicu-dev g++ libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev make" \
@@ -25,7 +21,8 @@ RUN BUILD_PKGS="zlib1g-dev libicu-dev g++ libfreetype6-dev libjpeg62-turbo-dev l
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
-    && docker-php-pecl-install xdebug \
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug \
     && apt-get autoremove -y $BUILD_PKGS \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
