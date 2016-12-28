@@ -6,6 +6,7 @@ LABEL org.nerdpress.release-date="2016-12-28"
 LABEL or.nerdpress.version.is-production="false"
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV PHP_VERSION 7.0.14
 
 #Append software required during runtime here.
 RUN BASE_PKGS="ca-certificates locales zsh curl vim git zip mcrypt htop ssh-client" \
@@ -72,20 +73,21 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
    && rm -rf /tmp/* /var/tmp/*
 
 ##Populate Environment
-#COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
-#COPY php.ini /usr/local/etc/php/
-#COPY zshrc.dist /var/www/.zshrc
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY php.ini /usr/local/etc/php/
 
 #Overtake www-data
 #RUN usermod -u $USER_ID www-data -s /bin/zsh
 
 #Install oh-my-zsh
-#ENV TERM=xterm
-#RUN git clone git://github.com/robbyrussell/oh-my-zsh.git /var/www/.oh-my-zsh
+ENV TERM=xterm
+RUN git clone git://github.com/robbyrussell/oh-my-zsh.git /var/www/.oh-my-zsh
 
 #Fix permissions and umask
 #RUN chgrp -R www-data /var/www
 #RUN chmod -R g+rwx /var/www
 #RUN umask 0007
 
-#WORKDIR /var/www/html
+EXPOSE 80
+WORKDIR /var/www/html
+ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
