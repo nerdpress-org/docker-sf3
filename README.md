@@ -53,14 +53,14 @@ Xdebug and Blackfire.io support are included by default.
 Official MySQL Docker [https://hub.docker.com/r/mysql/mysql-server/](mysql:5) is used.  
 Use the name of the service as the database host in your connection settings:
 
-    ```yml
+```yml
     database_driver:   pdo_mysql
     database_host:     db
     database_port:     3306
     database_name:     sf3
     database_user:     sf3
     database_password: sf3
-    ```
+```
 
 Its configured to be open for access from outside,  
 so if you prefer to use MySql Workbench on the host, use the containers IP as host.  
