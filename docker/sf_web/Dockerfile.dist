@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PHP_VERSION 7.0.14
 
 #Append software required during runtime here.
-RUN BASE_PKGS="ca-certificates locales zsh curl vim git zip mcrypt htop ssh-client" \
+RUN BASE_PKGS="ca-certificates locales zsh curl vim git zip mcrypt htop ssh-client sudo" \
     && apt-get update && apt-get install -y --no-install-recommends $BASE_PKGS \
     && apt-get autoremove -y && apt-get clean -y \
     && locale-gen en_US.UTF-8 \
@@ -53,8 +53,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 #COPY php.ini /usr/local/etc/php/
 
-#Overtake www-data
-RUN usermod -u $USER_ID www-data -s /bin/zsh
+#Overtake www-data, set zsh shell, append (!) groups sudo and adm
+RUN usermod -u $USER_ID www-data -s /bin/zsh -a -G sudo,adm
 
 #Install oh-my-zsh
 ENV TERM=xterm
