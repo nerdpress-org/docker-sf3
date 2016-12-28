@@ -28,10 +28,10 @@ RUN BUILD_PKGS="zlib1g-dev libicu-dev g++ libfreetype6-dev libjpeg62-turbo-dev l
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #Configure xdebug.
-RUN sed -i '1 a xdebug.remote_autostart=true' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
-RUN sed -i '1 a xdebug.remote_connect_back=1 ' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
-RUN sed -i '1 a xdebug.remote_enable=1' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
-RUN sed -i '1 a xdebug.max_nesting_level = 1200' /usr/local/etc/php/conf.d/docker-php-pecl-xdebug.ini
+RUN sed -i '1 a xdebug.remote_autostart=true' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN sed -i '1 a xdebug.remote_connect_back=1 ' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN sed -i '1 a xdebug.remote_enable=1' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN sed -i '1 a xdebug.max_nesting_level = 1200' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 #Install blackfire.
 RUN export VERSION=`php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;"` \
