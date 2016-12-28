@@ -23,3 +23,13 @@ The probe is integrated in the PHP container.
 Get the Blackfire Bookmarklet and enter your credentials in *docker-env* and thats it.
 
 Happy Profiling :)
+
+## Switching between Blackfire and Xdebug
+
+Do not run xdebug and blackfire simoultanously.
+In order ot enable or disable xdebug / blackfire, please run
+
+```yml
+sudo phpdismod xdebug
+sudo phpenmod blackfire
+```
