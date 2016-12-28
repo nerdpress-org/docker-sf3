@@ -19,7 +19,7 @@ RUN BASE_PKGS="ca-certificates locales zsh curl vim git zip mcrypt htop ssh-clie
 RUN echo Europe/Berlin > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
 
 #Add Ondrej Sury PPAs (https://launchpad.net/~ondrej) and install Apache+PHP
-RUN WEB_PKGS="apache2 nghttp2 php7.0 php7.0-mysql php-xdebug php-zip php-json php-curl php-xml libapache2-mod-php7.0" \
+RUN WEB_PKGS="apache2 nghttp2 php7.0 php7.0-mysql php7.0-sqlite php7.0-intl php-xdebug php-zip php-json php-curl php-xml libapache2-mod-php7.0" \
     && echo deb http://ppa.launchpad.net/ondrej/apache2/ubuntu xenial main > /etc/apt/sources.list.d/ondrej-apache2.list \
     && echo deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main > /etc/apt/sources.list.d/ondrej-php.list \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-key E5267A6C \
