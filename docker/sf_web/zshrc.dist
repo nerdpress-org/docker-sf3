@@ -54,7 +54,7 @@ HIST_STAMPS="dd/mm/yy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git symfony)
+plugins=(git symfony symfony2 composer)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,7 +91,6 @@ alias rm='rm -i'
 alias mv='mv -iv'
 alias grep='grep --color=auto -in'
 alias ll="ls -ahl"
-alias sf="php bin/console"
 alias sfcc="sf cache:clear"
 alias c="clear"
 alias db="mysql -hdb -uroot -proot"
