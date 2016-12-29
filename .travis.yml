@@ -7,6 +7,7 @@ services:
     - docker
 
 before_script:
+    - sudo sysctl -w vm.max_map_count=262144
     - composer create-project symfony/framework-standard-edition sf3_project
     - cp -r ./docker sf3_project
     - cd sf3_project/docker
