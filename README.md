@@ -18,6 +18,10 @@ permission-hassle free <sup>:tm:</sup> [» More](/Resources/doc/permissions.md)
     git clone https://github.com/nerdpress-org/docker-sf3.git docker-sf3
     cp -r docker-sf3/docker /path/to/your/symfony-project/
 
+Note: that for Elasticsearch 5 you need to raise max_map_count on the host.
+
+    sudo sysctl -w vm.max_map_count=262144
+
 ## Usage
 
     cd /path/to/your/symfony-project/docker

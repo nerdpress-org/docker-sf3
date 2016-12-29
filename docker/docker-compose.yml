@@ -59,7 +59,7 @@ services:
 
     #elasticsearch
     elasticsearch:
-        image: "elasticsearch:1.3"
+        image: "elasticsearch:5-alpine"
         container_name: "sf_elasticsearch"
         volumes:
             - "./data/elasticsearch/:/usr/share/elasticsearch/data"
