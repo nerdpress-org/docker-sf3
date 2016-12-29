@@ -69,7 +69,7 @@ services:
     #mailcatcher
     mailcatcher:
         container_name: "sf_mailcatcher"
-        image: schickling/mailcatcher
+        image: quay.io/datadarius/tiny-mailcatcher
         ports:
             - 1025:1025
             - 1080:1080
