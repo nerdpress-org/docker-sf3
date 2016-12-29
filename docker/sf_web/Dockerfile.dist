@@ -1,9 +1,9 @@
 FROM ubuntu:xenial
 
-LABEL com.example.version="1-beta"
+LABEL org.nerdpress.version="1-beta"
 LABEL vendor="nerdpress.org"
 LABEL org.nerdpress.release-date="2016-12-28"
-LABEL or.nerdpress.version.is-production="false"
+LABEL org.nerdpress.version.is-production="false"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV PHP_VERSION 7.0.14
