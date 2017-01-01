@@ -16,6 +16,7 @@ services:
             - "../:/var/www/html"
             - "~/.composer:/var/www/.composer"
             - ./sf_web/zshrc.dist:/var/www/.zshrc:ro
+            - ./sf_web/nerdpress.zsh-theme:/var/www/.oh-my-zsh/themes/nerdpress.zsh-theme:ro
         links:
             - db
             - elasticsearch
