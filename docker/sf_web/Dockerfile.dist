@@ -6,7 +6,7 @@ LABEL org.nerdpress.release-date="2016-12-28"
 LABEL org.nerdpress.version.is-production="false"
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV PHP_VERSION 7.0.14
+# Todo, set PHP_VERSION ENV through a php query.
 
 #Append software required during runtime here.
 RUN BASE_PKGS="ca-certificates locales zsh bash curl vim git zip mcrypt htop ssh-client sudo" \

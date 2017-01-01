@@ -20,7 +20,7 @@ permission-hassle free <sup>:tm:</sup> [» More](/Resources/doc/permissions.md)
 
 ## Please Notice
 
-    This software compilation is ment for local development purpose only.
+This software compilation is ment for local development purpose only.
 
 ## Usage
 
@@ -37,23 +37,24 @@ Open the browser: [http://[docker-host]:8080](http://[docker-host]:8080)
 ![toolbar](Resources/doc/toolbar.png)   
 
 
-## PHP7 on Apache 2.4 (http2 enabled)
+## Development Webserver (sf_web) 
 
+_PHP7 on Apache 2.4 (http2 enabled)_
 from the [Ondřej Surý PPA](https://launchpad.net/~ondrej)
 running on [Ubuntu:Xenial](https://hub.docker.com/_/ubuntu/) Docker Image.
 
-### Debugging & Tools.
+### Debugging
 
 Xdebug and Blackfire.io support are included by default.   
 [» How to configure](Resources/doc/debug.md) 
 
+### zsh default shell
 [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is the default shell.
 
 The Dockerfile can be found here:
-https://github.com/datadarius/docker-sf3/tree/ubuntu/docker/sf_web
+(/docker/sf_web Docker
 
-
-## DB
+## DB (sf_db)
 Official [MySQL:5](https://hub.docker.com/r/mysql/mysql-server/) Docker is used.  
 Use the name of the service as the database host in your connection settings:
 
@@ -79,10 +80,22 @@ Find the IP with:
 * [Mailcatcher SMTP](Resources/doc/services.md) 
 
 
-###Customizing Environment
-TODO
-Locale is en_US.UTF-8
-Timezone is set to Europe/Berlin
+### Customizing Environment
+*Locale is en_US.UTF-8
+*Timezone is set to Europe/Berlin
+
+## ToDos
+
+*Create a _.htaccess_ file in the docker folder, to prevent funny things.
+*Make docker_sf3 directly _installable_ into a Symfony project.
+*Add more tests for the additional services.
+*Tweak Nerdpress zsh theme
+*Dynamically add php version to sf_web env.
+*Dynamically populate db credentials for sf3 via environment.
+*Set up names to enable service discovery.
+*Set up automated certificate creation and clarify to make it persist.
+*Create an image (e.g. on quay.io) to speed up installation.
+*Set up continous image builds. (e.g. on cve or othe source images changes)
 
 
 
