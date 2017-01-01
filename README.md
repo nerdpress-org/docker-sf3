@@ -39,7 +39,7 @@ Open the browser: [http://[docker-host]:8080](http://[docker-host]:8080)
 
 ## Development Webserver (sf_web) 
 
-_PHP7 on Apache 2.4 (http2 enabled)_
+### PHP7 on Apache 2.4 (http2 enabled)
 from the [Ondřej Surý PPA](https://launchpad.net/~ondrej)
 running on [Ubuntu:Xenial](https://hub.docker.com/_/ubuntu/) Docker Image.
 
@@ -80,7 +80,7 @@ Find the IP with:
 * [Mailcatcher SMTP](Resources/doc/services.md) 
 
 
-### Customizing Environment
+## Customizing Environment
 * Locale is en_US.UTF-8
 * Timezone is set to Europe/Berlin
 
@@ -96,6 +96,3 @@ Find the IP with:
 * Set up automated certificate creation and clarify to make it persist.
 * Create an image (e.g. on quay.io) to speed up installation.
 * Set up continous image builds. (e.g. on cve or othe source images changes)
-
-
-

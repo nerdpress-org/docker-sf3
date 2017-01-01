@@ -14,3 +14,5 @@ port: 1025
 ```
 
 Webinterface on http://[yourhost*]:1080
+
+It uses the [tiny-mailcatcher](https://github.com/datadarius/tiny-mailcatcher) Docker Image.
