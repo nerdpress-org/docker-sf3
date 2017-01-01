@@ -74,7 +74,7 @@ Find the IP with:
 
 ### Otherwise use official phpmyadmin docker on [http://[docker-host]:8081](http://[docker-host]:8081) 
 
-### Other Services
+## Other Services
 
 * [Elasticsearch](Resources/doc/services.md) 
 * [Mailcatcher SMTP](Resources/doc/services.md) 
