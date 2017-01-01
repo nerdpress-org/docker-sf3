@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PHP_VERSION 7.0.14
 
 #Append software required during runtime here.
-RUN BASE_PKGS="ca-certificates locales zsh curl vim git zip mcrypt htop ssh-client sudo" \
+RUN BASE_PKGS="ca-certificates locales zsh bash curl vim git zip mcrypt htop ssh-client sudo" \
     && apt-get update && apt-get install -y --no-install-recommends $BASE_PKGS \
     && apt-get autoremove -y && apt-get clean -y \
     && locale-gen en_US.UTF-8 \
