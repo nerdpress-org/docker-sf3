@@ -81,21 +81,21 @@ Find the IP with:
 
 
 ### Customizing Environment
-*Locale is en_US.UTF-8
-*Timezone is set to Europe/Berlin
+* Locale is en_US.UTF-8
+* Timezone is set to Europe/Berlin
 
 ## ToDos
 
-*Create a _.htaccess_ file in the docker folder, to prevent funny things.
-*Make docker_sf3 directly _installable_ into a Symfony project.
-*Add more tests for the additional services.
-*Tweak Nerdpress zsh theme
-*Dynamically add php version to sf_web env.
-*Dynamically populate db credentials for sf3 via environment.
-*Set up names to enable service discovery.
-*Set up automated certificate creation and clarify to make it persist.
-*Create an image (e.g. on quay.io) to speed up installation.
-*Set up continous image builds. (e.g. on cve or othe source images changes)
+* Create a _.htaccess_ file in the docker folder, to prevent funny things.
+* Make docker_sf3 directly _installable_ into a Symfony project.
+* Add more tests for the additional services.
+* Tweak Nerdpress zsh theme
+* Dynamically add php version to sf_web env.
+* Dynamically populate db credentials for sf3 via environment.
+* Set up names to enable service discovery.
+* Set up automated certificate creation and clarify to make it persist.
+* Create an image (e.g. on quay.io) to speed up installation.
+* Set up continous image builds. (e.g. on cve or othe source images changes)
 
 
 
