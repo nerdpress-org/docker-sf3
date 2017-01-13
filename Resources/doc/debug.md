@@ -6,13 +6,20 @@ Do this manually and edit *docker-env* for your local settings, if you need to c
 ## Xdebug
 
 Xdebug is activated. 
-Change the ini settings for f.e. remote_host in the *docker-env* file according to your docker setup.  
+- Change the php.ini settings for f.e. remote_host in the *docker-env* file according to your docker setup.
+  - `172.17.0.1` should work or your local IP
+- In PHPStorm settings:
+  - Languages & Frameworks > PHP > Debug: 
+    - Port 9000
+  - you will need to setup a server, we assume that it is called *docker-sf3*.  
+    - In the Server set the Host you are using, Port will be *8080* and the Debugger is *Xdebug*.
+    - In the path mappings set your root dir to /var/www/html  
+  - Create a new *Debug Configuration* as *PHP Web Application*
+    - select your default browser and enter `/app_dev.php` as Start URL (or any other path you want as start path)
 
-In PHPStorm you will need to setup a server, we assume that it is called *docker-sf3*.  
-In the Server set the Host you are using, Port will be *8080* and the Debugger is *Xdebug*.  
-In the Path Mappings set your root dir to /var/www/html  
-
-Now set some breakpoint and call your site with ide key as GET param or in a cookie.  
+Now set some breakpoint and call your site with ide key as GET param or in a cookie.
+- When you click the green Bug (or `ctrl+f5` per default) a new Browser Window should open with `?XDEBUG_SESSION_START={RANDOMINT}`
+- You can stop the debugging session by calling your site with `?XDEBUG_SESSION_STOP` attached as GET parameter.
 
 Happy debugging :)
 
