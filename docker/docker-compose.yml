@@ -17,7 +17,6 @@ services:
             - ./sf_web/zshrc.dist:/var/www/.zshrc:ro
         links:
             - db
-            - elasticsearch
             - mailcatcher
             - blackfire
         env_file:
@@ -55,15 +54,6 @@ services:
             - PMA_HOST=db
             - PMA_USER=root
             - PMA_PASSWORD=root
-
-    #elasticsearch
-    elasticsearch:
-        image: "elasticsearch:5-alpine"
-        container_name: "sf_elasticsearch"
-        volumes:
-            - "./data/elasticsearch/:/usr/share/elasticsearch/data"
-        ports:
-            - 9201:9200
 
     #mailcatcher
     mailcatcher:
