@@ -11,7 +11,8 @@ services:
         container_name: "sf_web"
         ports:
             - 8080:80   #apache
-            - 9001:9000 #xdebug
+            - 8081:443   #apache secure
+
         volumes:
             - "../:/var/www/html"
             - "~/.composer:/var/www/.composer"
