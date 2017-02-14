@@ -2,7 +2,7 @@ FROM ubuntu:xenial
 
 LABEL org.nerdpress.version="1-beta"
 LABEL vendor="nerdpress.org"
-LABEL org.nerdpress.release-date="2016-12-28"
+LABEL org.nerdpress.release-date="2017-02-14"
 LABEL org.nerdpress.version.is-production="false"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -19,7 +19,7 @@ RUN BASE_PKGS="ca-certificates locales zsh bash curl vim git zip mcrypt htop ssh
 RUN echo Europe/Berlin > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
 
 #Add Ondrej Sury PPAs (https://launchpad.net/~ondrej) and install Apache+PHP
-RUN WEB_PKGS="apache2 nghttp2 php7.0 php7.0-mysql php7.0-sqlite php7.0-intl php-xdebug php-zip php-json php-curl php-xml libapache2-mod-php7.0" \
+RUN WEB_PKGS="apache2 nghttp2 php7.1 php7.1-mysql php7.1-sqlite php7.1-intl php-xdebug php-zip php-json php-curl php-xml libapache2-mod-php7.1" \
     && echo deb http://ppa.launchpad.net/ondrej/apache2/ubuntu xenial main > /etc/apt/sources.list.d/ondrej-apache2.list \
     && echo deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main > /etc/apt/sources.list.d/ondrej-php.list \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-key E5267A6C \
@@ -41,7 +41,7 @@ RUN export VERSION=`php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;"` \
     && curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/${VERSION} \
     && tar zxpf /tmp/blackfire-probe.tar.gz -C /tmp \
     && mv /tmp/blackfire-*.so `php -r "echo ini_get('extension_dir');"`/blackfire.so \
-    && echo "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707" > /etc/php/7.0/mods-available/blackfire.ini \
+    && echo "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707" > /etc/php/7.1/mods-available/blackfire.ini \
     && rm -rf /tmp/* /var/tmp/*
 
 #Install composer.
