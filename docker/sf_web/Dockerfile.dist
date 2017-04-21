@@ -44,6 +44,7 @@ RUN export VERSION=`php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;"` \
 #Install composer.
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer global require hirak/prestissimo \
+    && composer global require bamarni/symfony-console-autocomplete \
     && rm -rf /tmp/* /var/tmp/*
 
 #Populate Environment

@@ -94,3 +94,8 @@ alias ll="ls -ahl"
 alias sfcc="sf cache:clear"
 alias c="clear"
 alias db="mysql -hdb -uroot -proot"
+
+export SHELL="zsh"
+export PATH=~/.composer/vendor/bin:$PATH
+
+eval "$(symfony-autocomplete)"
