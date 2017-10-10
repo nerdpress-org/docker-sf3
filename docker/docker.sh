@@ -33,7 +33,7 @@ case "$(uname -s)" in
 esac
 
 sed "s/\$USER_ID/$uid/g" ./sf_web/Dockerfile.dist > ./sf_web/Dockerfile
-sed "s/\$HOST_IP/$host_ip/g" ./sf_web/docker-env.dist > ./sf_web/docker-env
+sed "s/\$HOST_IP/$host_ip/g" ./docker-env.dist > ./docker-env
 
 
 ##build and launch containers
