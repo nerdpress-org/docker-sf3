@@ -36,7 +36,7 @@ Open the browser: [http://[docker-host]:8080](http://[docker-host]:8080)
 
 PHP7 is used.  
 
-Xdebug and Blackfire.io support are included by default.   
+Xdebug (only Linux and dlite for Mac)  and Blackfire.io support are included by default.   
 [» How to configure](Resources/doc/debug.md) 
 
 ### DB

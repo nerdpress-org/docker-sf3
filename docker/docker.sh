@@ -29,7 +29,7 @@ fi
 
 case "$(uname -s)" in
     Linux*) host_ip="172.17.0.1";;
-    Darwin*) host_ip=$(dlite ip);;
+    Darwin*) host_ip=$(dlite status | grep dns_server | grep -oE "[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}");;
 esac
 
 sed "s/\$USER_ID/$uid/g" ./sf_web/Dockerfile.dist > ./sf_web/Dockerfile
