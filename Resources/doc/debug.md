@@ -1,13 +1,11 @@
 # Debug
 
-On first startup the *docker-env.dist* file will be copied to the *docker-env* which will be used.  
-Do this manually and edit *docker-env* for your local settings, if you need to change values initally.  
+On every startup the *docker-env.dist* file will be copied to the *docker-env* which will be used.
+When copying, the remote\_host is set for xdebug.
 
 ## Xdebug
 
 Xdebug is activated. 
-- Change the php.ini settings for f.e. remote_host in the *docker-env* file according to your docker setup.
-  - `172.17.0.1` should work or your local IP
 - In PHPStorm settings:
   - Languages & Frameworks > PHP > Debug: 
     - Port 9000

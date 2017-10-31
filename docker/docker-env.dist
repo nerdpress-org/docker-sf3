@@ -1,9 +1,4 @@
-#linux
-XDEBUG_CONFIG=remote_host=localhost remote_port=9000 xdebug.remote_mode=req xdebug.remote_handler=dbgp
-#dlite
-#XDEBUG_CONFIG=remote_host=local.docker remote_port=9000 xdebug.remote_mode=req xdebug.remote_handler=dbgp
-# the VMs IP that runs docker
-#XDEBUG_CONFIG=remote_host=192.168.2.165 remote_port=9000 xdebug.remote_mode=req xdebug.remote_handler=dbgp
+XDEBUG_CONFIG=remote_enable=1 remote_host=$HOST_IP remote_port=9000 remote_mode=req remote_handler=dbgp
 
 PHP_IDE_CONFIG=serverName=docker-sf3
 

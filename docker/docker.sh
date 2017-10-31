@@ -27,11 +27,14 @@ if [ $uid -gt 100000 ]; then
 	uid=1000
 fi
 
-sed "s/\$USER_ID/$uid/g" ./sf_web/Dockerfile.dist > ./sf_web/Dockerfile
+case "$(uname -s)" in
+    Linux*) host_ip="172.17.0.1";;
+    Darwin*) host_ip=$(dlite status | grep dns_server | grep -oE "[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}");;
+esac
 
-if [ ! -e ./docker-env ]; then
-    cp ./docker-env.dist ./docker-env
-fi
+sed "s/\$USER_ID/$uid/g" ./sf_web/Dockerfile.dist > ./sf_web/Dockerfile
+sed "s/\$HOST_IP/$host_ip/g" ./docker-env.dist > ./docker-env
+
 
 ##build and launch containers
 docker-compose build
