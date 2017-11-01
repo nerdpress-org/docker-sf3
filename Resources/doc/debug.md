@@ -5,9 +5,9 @@ When copying, the remote\_host is set for xdebug.
 
 ## Xdebug
 
-Xdebug is activated. 
+Xdebug is activated.
 - In PHPStorm settings:
-  - Languages & Frameworks > PHP > Debug: 
+  - Languages & Frameworks > PHP > Debug:
     - Port 9000
   - you will need to setup a server, we assume that it is called *docker-sf3*.  
     - In the Server set the Host you are using, Port will be *8080* and the Debugger is *Xdebug*.
@@ -18,6 +18,13 @@ Xdebug is activated.
 Now set some breakpoint and call your site with ide key as GET param or in a cookie.
 - When you click the green Bug (or `ctrl+f5` per default) a new Browser Window should open with `?XDEBUG_SESSION_START={RANDOMINT}`
 - You can stop the debugging session by calling your site with `?XDEBUG_SESSION_STOP` attached as GET parameter.
+
+For debugging in cli create a "PHP remote debugger" and set the xdebug config as ENV var:  
+
+>export XDEBUG_CONFIG="remote_enable=1 remote_host=172.17.0.1 remote_port=9000 remote_mode=req remote_connect_back=0 idekey=XDEBUG_IDEA remote_handler=dbgp"
+
+then set your breakpoint and run the cli script, f.e.  
+>vendor/bin/simple-phpunit
 
 Happy debugging :)
 
